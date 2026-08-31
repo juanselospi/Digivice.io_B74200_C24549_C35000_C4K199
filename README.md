@@ -5,7 +5,7 @@
 # Digivice.io
 
 **Universidad de Costa Rica**  
-CI-0127 - Desarrollo de Web  
+CI-0137 - Desarrollo de Web  
 Profesora: Mariana Núñez Arguedas
 
 **Estudiantes:**
