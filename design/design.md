@@ -23,7 +23,7 @@ Se tiene como enfoque principal la simplicidad y el minimalismo, con el objetivo
 
 En el siguiente diagrama se muestra la estructura jerarquica del sitio web, incluyendo las páginas y las conexiones entre ellas.
 
-![Mapa del sitio](./sitemap.svg)
+![Mapa del sitio](Digivice.io%20-%20Mapa%20del%20sitio.png)
 
 Las páginas principales del sitio son:
 
@@ -41,7 +41,7 @@ El wireflow principal del sitio web representa el flujo de navegación tipico pa
 
 Enlace al wireflow principal: [Wireflow en Figma](https://www.figma.com/file/...)
 
-{Descripción general del wireflow principal, incluyendo las interacciones y transiciones entre las páginas. Insertar wireframes o referenciarlos}
+Además los frames de cada página se encuentran disponibles en la carpeta `design/Frames Exportados`.
 
 ## 4. Acuerdos grupales
 Inicialmente se hizo un ejercicio de forma individual llamado _Crazy 8_, donde cada integrante propuso 8 bocetos del diseño de cada página, luego la persona encargada de la creación de un wireframe particular, tomó los mejores elementos de cada propuesta y compartio su desición para que el resto del grupo lo aprobara, de esta forma se logró un consenso grupal sobre el diseño final del wireflow.
