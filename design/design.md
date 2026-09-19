@@ -39,7 +39,7 @@ Las páginas principales del sitio son:
 
 El wireflow principal del sitio web representa el flujo de navegación tipico para jugar al juego. Por medio de la herramienta Figma, se diseñó un wireflow que muestra las interacciones y transiciones entre las páginas principales del sitio.
 
-Enlace al wireflow principal: [Wireflow en Figma](https://www.figma.com/proto/S1kLaLN4na0xOhAKdMNT0R/Digivice?node-id=3-410&p=f&t=iKCUrOYA68uNgRyw-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A410 )
+Enlace al wireflow principal: [Wireflow en Figma](https://www.figma.com/proto/S1kLaLN4na0xOhAKdMNT0R/Digivice?node-id=3-410&p=f&t=poemMXhUVaLBezFo-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A410)
 
 Además los frames de cada página se encuentran disponibles en la carpeta `design/Frames Exportados`.
 
