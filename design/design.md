@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../logo/logo.png" alt="Digivice.io" width="320">
+  <img src="../assets/logo/rebranding-invertido.jpg" alt="Digivice.io" width="480">
 </p>
 
 # Arquitectura del sitio
