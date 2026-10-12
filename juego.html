@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- El mapa se dibuja con JS en el canvas y el HUD es HTML normal, asi el JS solo cambia los valores.
+     los nombres y numeros son de ejemplo, los mismos del diseño. -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juego · Digivice.io</title>
+  <meta name="description" content="Partida de Digivice.io: mueve tu Digimon por el mapa, recolecta data, evoluciona y sé el último en pie.">
+  <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+</head>
+<body>
+  <!-- header de partida: sin menu ni buscador para no salirse del juego sin querer -->
+  <header>
+    <a href="index.html">
+      <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
+    </a>
+    <p>Sala ABC123</p>
+    <p>5 de 6 jugadores</p>
+    <a href="index.html">Salir de la partida</a>
+  </header>
+
+  <main>
+    <!-- en el diseño no se ve, con CSS se puede esconder visualmente pero tiene que estar -->
+    <h1>Partida</h1>
+
+    <!-- arriba a la izquierda. el aro rojo del diseño es la barra de evolucion (el progress) -->
+    <section>
+      <h2>Tu Digimon</h2>
+      <dl>
+        <dt>Digimon</dt>
+        <dd>Agumon</dd>
+        <dt>Tipo</dt>
+        <dd>Vaccine</dd>
+        <dt>Etapa</dt>
+        <dd>Rookie</dd>
+        <dt>Puntaje / HP</dt>
+        <dd>1&nbsp;265</dd>
+        <dt><label for="evolucion">Evolución</label></dt>
+        <dd><progress id="evolucion" max="20" value="13">13 de 20</progress> 13/20 Vaccine</dd>
+        <dt>Ataque</dt>
+        <dd>8%</dd>
+        <dt>Especial</dt>
+        <dd>−4% HP</dd>
+      </dl>
+    </section>
+
+    <!-- arriba al centro -->
+    <section>
+      <h2>Tiempo</h2>
+      <p><time datetime="PT3M27S">03:27</time></p>
+      <p>Zona segura: se reduce en <time datetime="PT42S">0:42</time></p>
+    </section>
+
+    <!-- arriba a la derecha. el puntaje va en data para poder darle estilo aparte del nombre sin usar span -->
+    <section>
+      <header>
+        <h2>Leaderboard</h2>
+        <p>Vivos 5/6</p>
+      </header>
+      <ol>
+        <li>Rival_02 <data value="2140">2&nbsp;140</data></li>
+        <li aria-current="true">Nick (tú) <data value="1265">1&nbsp;265</data></li>
+        <li>Tamer77 <data value="640">640</data></li>
+        <li>xX_Koji <data value="410">410</data></li>
+        <li>Mimi_ai <data value="220">220</data></li>
+        <li>Taichi <data value="0">eliminado</data></li>
+      </ol>
+    </section>
+
+    <!-- el mapa: la cuadricula, la zona segura, los orbes y los digimon se dibujan con JS.
+         width y height default, despues el JS lo ajusta a la pantalla.
+         la leyenda de abajo a la izquierda es el figcaption -->
+    <figure>
+      <canvas id="mapa" width="1280" height="800">
+        <p>Aquí va el mapa de la partida, con la zona segura, los orbes y los Digimon de cada jugador.</p>
+      </canvas>
+      <figcaption>
+        <p>Cada color de orbe es un tipo de data:</p>
+        <dl>
+          <dt>Verde</dt>
+          <dd>Data</dd>
+          <dt>Rojo</dt>
+          <dd>Vaccine</dd>
+          <dt>Morado</dt>
+          <dd>Virus</dd>
+          <dt>Celeste</dt>
+          <dd>Free</dd>
+        </dl>
+      </figcaption>
+    </figure>
+
+    <!-- abajo a la derecha -->
+    <section>
+      <h2>Ataque especial</h2>
+      <p>Barra espaciadora (tap en móvil)</p>
+      <button type="button" aria-keyshortcuts="Space"><kbd>Espacio</kbd> −4% HP</button>
+    </section>
+
+    <!-- modales de fin de partida.
+         van cerrados, el JS abre el que toque con showModal() cuando termina la partida.
+         para verlos mientras no hay JS, ponganle el atributo open a uno.
+         el enlace de continuar se puede estirar con CSS a todo el modal, como dice el texto -->
+    <dialog id="fin-derrota" aria-labelledby="titulo-derrota">
+      <header>
+        <img src="assets/digishell/3%20-%20Agumon%20EX/Agumon/c0189_0.png" alt="Sprite de Agumon" width="192" height="192">
+        <h2 id="titulo-derrota">Fin del juego</h2>
+        <p>Inténtalo de nuevo</p>
+      </header>
+      <dl>
+        <dt>Puesto final</dt>
+        <dd>4 de 6</dd>
+        <dt>Puntaje máximo</dt>
+        <dd>1&nbsp;265</dd>
+        <dt>Etapa alcanzada</dt>
+        <dd>Rookie</dd>
+        <dt>Tiempo sobrevivido</dt>
+        <dd><time datetime="PT3M27S">03:27</time></dd>
+      </dl>
+      <table>
+        <caption>Resultados de la partida</caption>
+        <thead>
+          <tr>
+            <th scope="col">Puesto</th>
+            <th scope="col">Jugador</th>
+            <th scope="col">Puntaje</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><th scope="row">Rival_02</th><td>2&nbsp;140</td><td>En juego</td></tr>
+          <tr><td>2</td><th scope="row">Tamer77</th><td>980</td><td>En juego</td></tr>
+          <tr><td>3</td><th scope="row">Mimi_ai</th><td>520</td><td>En juego</td></tr>
+          <tr aria-current="true"><td>4</td><th scope="row">Nick (tú)</th><td>0</td><td>Eliminado</td></tr>
+          <tr><td>5</td><th scope="row">xX_Koji</th><td>0</td><td>Eliminado</td></tr>
+          <tr><td>6</td><th scope="row">Taichi</th><td>0</td><td>Eliminado</td></tr>
+        </tbody>
+      </table>
+      <button type="button">Compartir</button>
+      <p><a href="index.html">Presiona cualquier parte para continuar</a></p>
+    </dialog>
+
+    <dialog open id="fin-victoria" aria-labelledby="titulo-victoria">
+      <header>
+        <img src="assets/digishell/3%20-%20Agumon%20EX/Agumon/c0189_0.png" alt="Sprite de Agumon" width="192" height="192">
+        <h2 id="titulo-victoria">¡Ganador!</h2>
+        <p>Tu Digimon fue el último en pie en la Sala ABC123</p>
+      </header>
+      <dl>
+        <dt>Puntaje final</dt>
+        <dd>2&nbsp;140</dd>
+        <dt>Etapa alcanzada</dt>
+        <dd>Champion</dd>
+        <dt>Eliminaciones</dt>
+        <dd>3</dd>
+        <dt>Duración</dt>
+        <dd><time datetime="PT4M12S">04:12</time></dd>
+      </dl>
+      <table>
+        <caption>Resultados de la partida</caption>
+        <thead>
+          <tr>
+            <th scope="col">Puesto</th>
+            <th scope="col">Jugador</th>
+            <th scope="col">Puntaje</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr aria-current="true"><td>1</td><th scope="row">Nick (tú)</th><td>2&nbsp;140</td><td>Ganador</td></tr>
+          <tr><td>2</td><th scope="row">Rival_02</th><td>1&nbsp;870</td><td>Eliminado</td></tr>
+          <tr><td>3</td><th scope="row">Tamer77</th><td>640</td><td>Eliminado</td></tr>
+          <tr><td>4</td><th scope="row">xX_Koji</th><td>410</td><td>Eliminado</td></tr>
+          <tr><td>5</td><th scope="row">Mimi_ai</th><td>220</td><td>Eliminado</td></tr>
+          <tr><td>6</td><th scope="row">Taichi</th><td>0</td><td>Eliminado</td></tr>
+        </tbody>
+      </table>
+      <button type="button">Compartir</button>
+      <p><a href="index.html">Presiona cualquier parte para continuar</a></p>
+    </dialog>
+  </main>
+
+  <!-- footer corto de partida -->
+  <footer>
+    <p><small>© 2026 Digivice.io</small></p>
+    <nav aria-label="Enlaces del pie de página">
+      <ul>
+        <li><a href="creditos.html">Créditos</a></li>
+        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
