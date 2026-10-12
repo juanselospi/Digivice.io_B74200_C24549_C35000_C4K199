@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo/logo.png" alt="Digivice.io" width="320">
+  <img src="assets/logo/rebranding-invertido.jpg" alt="Digivice.io" width="480">
 </p>
 
 # Digivice.io
@@ -97,3 +97,34 @@ Cada partida de Digivice.io tendrá un mínimo de 2 jugadores y estará diseñad
 | Diseño / QA / coordinación | Juan Loaiza | B74200 |
 
 ---
+
+## 7\. Estructura del sitio y cómo agregar páginas
+
+Todas las páginas van en la raíz del repo para que GitHub Pages las sirva directo:
+
+| Archivo | Página |
+| :---- | :---- |
+| `index.html` | Inicio |
+| `lobby.html` | Lobby |
+| `juego.html` | Juego |
+| `reglas.html` | Reglas |
+| `acerca.html` | Acerca de nosotros |
+| `creditos.html` | Créditos |
+
+Carpetas de apoyo:
+
+- `assets/logo/` el logo del juego.
+- `assets/icon/` el ícono del Digivice y los favicons que salen de él.
+- `assets/digishell/` los sprites de los Digimon (ver el README que hay adentro).
+- `design/` todo lo de diseño: mapa del sitio, wireflow, crazy 8's.
+
+### Para hacer una página nueva
+
+1. Copiar `plantilla.html` con el nombre que toca (por ejemplo `reglas.html`).
+2. Cambiar lo que dice `CAMBIAR` en los comentarios: el `title`, la `description`
+   y mover el `aria-current="page"` al enlace de esa página en el menú.
+3. Escribir el contenido dentro de `main`, con un solo `h1`.
+4. No usar `div` ni `span`, solo etiquetas semánticas (`section`, `article`, `nav`, etc.).
+5. Pasar la página por el [validador de la W3C](https://validator.w3.org/) antes de hacer merge a `entrega-2`.
+
+Esta entrega es solo HTML. El CSS y el JS vienen en las siguientes.

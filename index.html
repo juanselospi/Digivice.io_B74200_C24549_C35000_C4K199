@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- pagina de inicio -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio · Digivice.io</title>
+  <meta name="description" content="Digivice.io es un juego multijugador en tiempo real. Escribe tu nickname, elige tu Digimon y entra a jugar.">
+  <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
+    </a>
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="reglas.html">Reglas</a></li>
+        <li><a href="acerca.html">Acerca de nosotros</a></li>
+      </ul>
+    </nav>
+    <!-- buscador por ahora es solo estetico -->
+    <form role="search">
+      <label for="buscar">Buscar</label>
+      <input type="search" id="buscar" name="q" placeholder="Buscar">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <main>
+    <h1><img src="assets/logo/rebranding.png" alt="Digivice.io" width="478" height="95"></h1>
+
+    <!-- todo el inicio es un solo formulario.
+         como todavia no hay javascript al enviarlo manda los datos a lobby.html por la URL y así el flujo ya funciona. -->
+    <form action="lobby.html" method="get">
+      <p>
+        <label for="nickname">Nickname</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Nickname"
+               required minlength="3" maxlength="16" autocomplete="nickname">
+      </p>
+
+      <fieldset>
+        <legend>Elegir digimon</legend>
+        <!-- cada digimon es un li. 
+             para agregar uno nuevo(si alguno lo quiere hacer despues):
+              1. copien un li completo.
+              2. cambien el id, el value, el nombre y el tipo (Data, Vaccine o Virus)
+              3. apunten el src al sprite _0 (el que esta quieto) de su carpeta en los assets/digishell
+             las flechas < > del carrusel del diseño se hacen con JS despues, por ahora se ven todos los digimon al mismo tiempo. -->
+        <ul>
+          <li>
+            <input type="radio" id="digimon-agumon" name="digimon" value="agumon" checked>
+            <label for="digimon-agumon">
+              <img src="assets/digishell/3%20-%20Agumon%20EX/Agumon/c0189_0.png" alt="Sprite de Agumon" width="192" height="192">
+              Agumon <small>Vaccine</small>
+            </label>
+          </li>
+          <li>
+            <input type="radio" id="digimon-gabumon" name="digimon" value="gabumon">
+            <label for="digimon-gabumon">
+              <img src="assets/digishell/4%20-%20Gabumon%20EX/Gabumon/c0206_0.png" alt="Sprite de Gabumon" width="192" height="192">
+              Gabumon <small>Data</small>
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+
+      <button type="submit">Jugar</button>
+    </form>
+  </main>
+
+  <footer>
+    <p><small>© 2026 Digivice.io</small></p>
+    <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
+    <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
+    <nav aria-label="Enlaces del pie de página">
+      <ul>
+        <li><a href="creditos.html">Créditos</a></li>
+        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
