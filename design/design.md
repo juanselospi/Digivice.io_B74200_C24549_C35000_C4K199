@@ -32,7 +32,7 @@ Las páginas principales del sitio son:
 - **Juego**: Mapa de juego donde los jugadores pueden moverse, consumir orbes y enfrentarse a otros jugadores. Aquí se desarrollan las mecánicas del juego.
 
 - **Reglas**: Página informativa que detalla las reglas del juego, incluyendo orbes, evolucióm digimon, combate, zona de juego, entre otros.
-- 
+
 - **Acerca de**: Página que describe la misión, visión y valores de la empresa.
 
 ## 3. Wireflow principal
