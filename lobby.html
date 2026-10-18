@@ -24,6 +24,35 @@
 
   <main>
     <h1>Sala de espera</h1>
+
+    <section>
+      <h2>Tiempo para iniciar partida</h2>
+      <p><time datetime="PT59S">00:59</time></p>
+    </section>
+
+    <section>
+      <h2>Jugadores conectados</h2>
+      <p>
+        <label for="cupo">Cupo de la sala</label>
+        <meter id="cupo" min="0" max="6" low="2" optimum="6" value="3">3 de 6</meter>
+        3 de 6 jugadores, mínimo 2 para empezar
+      </p>
+      <table>
+        <caption>Jugadores en la sala</caption>
+        <thead>
+          <tr>
+            <th scope="col">Jugador</th>
+            <th scope="col">Digimon</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr aria-current="true"><th scope="row">Nickname (tú)</th><td>Agumon</td><td>Listo</td></tr>
+          <tr><th scope="row">Bot_1</th><td>Agumon</td><td>Listo</td></tr>
+          <tr><th scope="row">Bot_2</th><td>Gabumon</td><td>Esperando</td></tr>
+        </tbody>
+      </table>
+    </section>
   </main>
 
   <!-- footer corto de partida -->
