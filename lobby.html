@@ -53,6 +53,40 @@
         </tbody>
       </table>
     </section>
+
+    <section>
+      <h2>Controles</h2>
+      <dl>
+        <dt>Mover tu Digimon</dt>
+        <dd><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> o las flechas <kbd>↑</kbd> <kbd>←</kbd> <kbd>↓</kbd> <kbd>→</kbd></dd>
+        <dt>Ataque especial</dt>
+        <dd><kbd>Espacio</kbd> (tap en móvil)</dd>
+        <dt>Información de la partida</dt>
+        <dd><kbd>Tab</kbd></dd>
+      </dl>
+
+      <!-- en el juego se abre con Tab-->
+      <button type="button" command="show-modal" commandfor="tutorial">Ver mini-tutorial</button>
+      <dialog id="tutorial" aria-labelledby="titulo-tutorial" closedby="any">
+        <h3 id="titulo-tutorial">Mini-tutorial</h3>
+        <h4>Evolución</h4>
+        <p>Tu Digimon necesita un tipo específico de orbe para evolucionar.</p>
+        <h4>Leaderboard</h4>
+        <p>Muestra el puntaje de cada jugador. "Vivos" indica cuántos jugadores siguen en la partida.</p>
+        <h4>Orbes</h4>
+        <p>Recoge los orbes del mapa para aumentar tu puntaje y tamaño. El color indica el tipo de data.</p>
+        <h4>Ataque especial</h4>
+        <p>Presiona <kbd>Espacio</kbd> para atacar a distancia. Atacar consume parte de tu vida.</p>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
+    </section>
+
+    <p>
+      <button type="button">Estoy listo</button>
+      <a href="juego.html">Entrar a la partida</a>
+    </p>
   </main>
 
   <!-- footer corto de partida -->
