@@ -8,6 +8,9 @@
 CI-0137 - Desarrollo de Web  
 Profesora: Mariana Núñez Arguedas
 
+**Sitio publicado:** [https://juanselospi.github.io/Digivice.io_B74200_C24549_C35000_C4K199/](https://juanselospi.github.io/Digivice.io_B74200_C24549_C35000_C4K199/)  
+**Validación W3C:** [docs/validacion](docs/validacion/README.md)
+
 **Estudiantes:**
 - Jeferson Marín C24549
 - Agustín Soto C4K199
@@ -125,6 +128,6 @@ Carpetas de apoyo:
    y mover el `aria-current="page"` al enlace de esa página en el menú.
 3. Escribir el contenido dentro de `main`, con un solo `h1`.
 4. No usar `div` ni `span`, solo etiquetas semánticas (`section`, `article`, `nav`, etc.).
-5. Pasar la página por el [validador de la W3C](https://validator.w3.org/) antes de hacer merge a `entrega-2`.
+5. Pasar la página por el [validador de la W3C](https://validator.w3.org/) antes de hacer merge a `main` (o correr `bash docs/validacion/validar.sh`).
 
 Esta entrega es solo HTML. El CSS y el JS vienen en las siguientes.
