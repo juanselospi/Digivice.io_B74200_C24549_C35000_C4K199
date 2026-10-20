@@ -35,6 +35,8 @@ Las páginas principales del sitio son:
 
 - **Acerca de**: Página que describe la misión, visión y valores de la empresa.
 
+- **Créditos**: Página con la atribución de las imágenes, sprites, íconos, fuentes y demás recursos externos usados en el sitio, con su fuente y licencia. Se accede desde el enlace del pie de página, que está presente en todas las páginas.
+
 ## 3. Wireflow principal
 
 El wireflow principal del sitio web representa el flujo de navegación tipico para jugar al juego. Por medio de la herramienta Figma, se diseñó un wireflow que muestra las interacciones y transiciones entre las páginas principales del sitio.
