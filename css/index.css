@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Digivice.io — CI-0137
+   Página de inicio
+
+   Logo grande, el nickname, la selección de Digimon y el botón para jugar,
+   todo centrado en una columna. Se enlaza después de common.css.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Disposición
+   -------------------------------------------------------------------------- */
+
+.inicio {
+  text-align: center;
+}
+
+.inicio__logo {
+  margin: var(--espacio-4) 0 var(--espacio-5);
+}
+
+/* El logo entra con la misma animación que los modales. */
+.inicio__logo img {
+  width: min(30rem, 100%);
+  animation: aparecer 600ms ease;
+}
+
+.inicio__formulario {
+  display: grid;
+  justify-items: center;
+  gap: var(--espacio-5);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Nickname
+   -------------------------------------------------------------------------- */
+
+/* La etiqueta se ve arriba del campo: el placeholder solo no alcanza,
+   porque desaparece apenas se empieza a escribir. */
+.inicio__nickname {
+  display: grid;
+  gap: var(--espacio-1);
+  width: min(22rem, 100%);
+  margin: 0;
+  text-align: start;
+}
+
+.inicio__nickname label {
+  font-family: var(--fuente-titulo);
+  font-size: var(--texto-chico);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Selección de Digimon
+   -------------------------------------------------------------------------- */
+
+.selector {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.selector__titulo {
+  margin-inline: auto;
+  margin-bottom: var(--espacio-3);
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-size: var(--titulo-3);
+}
+
+.selector__lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Cada opción es el label del radio: el círculo con el sprite, el nombre
+   y el tipo. El radio queda oculto con .solo-lectores, pero sigue
+   funcionando con teclado (flechas para cambiar de Digimon). */
+.selector__opcion {
+  display: grid;
+  justify-items: center;
+  gap: var(--espacio-1);
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* En los PNG el Digimon está parado en el borde de abajo, no en el centro.
+   object-position lo sube un 20 % del círculo para centrarlo; lo que se
+   recorta arriba es parte transparente del PNG. */
+.selector__sprite {
+  --diametro: 7rem;
+
+  width: var(--diametro);
+  height: var(--diametro);
+  object-fit: contain;
+  object-position: 50% calc(var(--diametro) * -0.2);
+  border: 3px solid var(--color-borde);
+  border-radius: 50%;
+  background: var(--color-fondo-suave);
+  filter: grayscale(60%);
+  transition: transform var(--transicion), filter var(--transicion);
+}
+
+.selector__opcion:hover .selector__sprite {
+  filter: none;
+  transform: translateY(-4px);
+}
+
+/* El Digimon elegido: círculo más grande, borde negro grueso, a todo color
+   y flotando. Así no se distingue solo por el color. */
+.selector__radio:checked + .selector__opcion .selector__sprite {
+  --diametro: 10rem;
+
+  border: 4px solid var(--color-texto);
+  background: var(--color-fondo);
+  filter: none;
+  animation: flotar 2s ease-in-out infinite;
+}
+
+.selector__radio:focus-visible + .selector__opcion .selector__sprite {
+  outline: var(--foco);
+  outline-offset: 4px;
+}
+
+/* El tipo de data lleva un punto del color de su orbe. El punto es
+   decoración: el nombre del tipo siempre está escrito al lado. */
+.selector__tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-chico);
+  font-weight: 400;
+  color: var(--color-texto-suave);
+}
+
+.selector__tipo::before {
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: var(--color-orbe, currentcolor);
+}
+
+.selector__tipo--data {
+  --color-orbe: var(--orbe-data);
+}
+
+.selector__tipo--vaccine {
+  --color-orbe: var(--orbe-vaccine);
+}
+
+.selector__tipo--virus {
+  --color-orbe: var(--orbe-virus);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Botón jugar
+   -------------------------------------------------------------------------- */
+
+.inicio__jugar {
+  min-width: 12rem;
+  font-size: var(--titulo-3);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Animaciones
+   -------------------------------------------------------------------------- */
+
+/* Sube y baja suave, como un Digimon esperando. common.css la apaga si el
+   sistema pide reducir movimiento. */
+@keyframes flotar {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Pantallas angostas
+   -------------------------------------------------------------------------- */
+
+@media (width < 30rem) {
+  .selector__sprite {
+    --diametro: 5.5rem;
+  }
+
+  .selector__radio:checked + .selector__opcion .selector__sprite {
+    --diametro: 7.5rem;
+  }
+}
