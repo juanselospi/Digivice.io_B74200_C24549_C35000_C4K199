@@ -11,11 +11,11 @@
   <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
 </head>
 <body>
-  <header>
-    <a href="index.html">
+  <header class="encabezado">
+    <a class="encabezado__logo" href="index.html">
       <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
     </a>
-    <nav aria-label="Menú principal">
+    <nav class="menu" aria-label="Menú principal">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="reglas.html">Reglas</a></li>
@@ -23,10 +23,10 @@
       </ul>
     </nav>
     <!-- buscador -->
-    <form role="search">
-      <label for="buscar">Buscar</label>
+    <form class="buscador" role="search">
+      <label class="solo-lectores" for="buscar">Buscar</label>
       <input type="search" id="buscar" name="q" placeholder="Buscar">
-      <button type="submit">Buscar</button>
+      <button class="buscador__boton" type="submit">Buscar</button>
     </form>
   </header>
 
@@ -114,14 +114,14 @@
     </section>
   </main>
 
-  <footer>
-    <p><small>© 2026 Digivice.io</small></p>
+  <footer class="pie">
+    <p class="pie__marca"><small>© 2026 Digivice.io</small></p>
     <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
     <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
     <nav aria-label="Enlaces del pie de página">
       <ul>
-        <li><a href="creditos.html" aria-current="page">Créditos</a></li>
-        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+        <li><a class="pie__enlace" href="creditos.html" aria-current="page">Créditos</a></li>
+        <li><a class="pie__enlace" href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
       </ul>
     </nav>
   </footer>
