@@ -1,0 +1,154 @@
+/* pagina de reglas */
+
+/* va despues de tokens.css y common.css. una columna en celular y dos de 48rem para arriba */
+
+/* el main es la grid de las tarjetas, lo que no es tarjeta ocupa toda la fila */
+.reglas {
+  display: grid;
+  align-content: start;
+  gap: var(--espacio-3);
+}
+
+.reglas > :not(.regla) {
+  grid-column: 1 / -1;
+  margin-block: 0;
+}
+
+/* el buscador de common es chiquito para el header, aca va a todo el ancho */
+.buscador--reglas {
+  max-width: none;
+  margin-left: 0;
+}
+
+
+/* tarjetas de reglas
+   el icono va a la izquierda y lo demas en la segunda columna */
+.regla {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  align-content: start;
+  justify-items: start;
+  gap: var(--espacio-2) var(--espacio-3);
+  transition: transform var(--transicion), border-color var(--transicion);
+}
+
+.regla__titulo,
+.regla__texto,
+.regla__boton {
+  grid-column: 2;
+}
+
+.regla__titulo {
+  margin: 0;
+  font-size: var(--titulo-2);
+}
+
+.regla__texto {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
+
+
+/* iconos, son svg nuestros en assets/reglas */
+.regla::before {
+  content: "";
+  grid-row: 1 / span 3;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  background: center / contain no-repeat;
+  transition: transform var(--transicion);
+}
+
+.regla--orbes::before {
+  background-image: url("../assets/reglas/orbes.svg");
+}
+
+.regla--evolucion::before {
+  background-image: url("../assets/reglas/evolucion.svg");
+}
+
+.regla--combate::before {
+  background-image: url("../assets/reglas/combate.svg");
+}
+
+.regla--zona::before {
+  background-image: url("../assets/reglas/zona.svg");
+}
+
+
+/* el boton se queda visible pero el ::after lo estira a toda la tarjeta.
+   hay que quitarle el transform del hover de common porque si no
+   el ::after se encoge al tamaño del boton justo cuando pasa el mouse.
+   el nowrap de common se quita porque el texto largo desbordaba en celular */
+.regla__boton {
+  padding-block: var(--espacio-1);
+  white-space: normal;
+}
+
+.regla__boton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.regla__boton:hover,
+.regla__boton:active {
+  transform: none;
+}
+
+.regla:has(> .regla__boton:focus-visible) {
+  border-color: var(--color-marca);
+}
+
+/* el :not es porque el modal esta adentro de la tarjeta y si no se mueve atras */
+.regla:hover:not(:has(dialog[open])) {
+  border-color: var(--color-marca);
+  transform: translateY(-3px);
+}
+
+.regla:hover:not(:has(dialog[open]))::before {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+
+/* modales de reglas, el dialog y la tabla ya vienen de common */
+.regla dialog h3 {
+  margin-bottom: var(--espacio-3);
+  font-size: var(--titulo-2);
+}
+
+.regla dialog h4 {
+  margin: var(--espacio-4) 0 var(--espacio-2);
+  font-size: var(--titulo-3);
+}
+
+.regla dialog p {
+  margin-block: var(--espacio-2);
+}
+
+.regla dialog table {
+  margin-block: var(--espacio-3);
+}
+
+.regla dialog form {
+  margin-top: var(--espacio-4);
+  text-align: end;
+}
+
+
+/* de tablet para arriba dos columnas y mas aire */
+@media (width >= 48rem) {
+  .reglas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacio-4);
+  }
+
+  .regla {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .regla::before {
+    width: 3rem;
+  }
+}

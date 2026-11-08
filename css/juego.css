@@ -1,0 +1,677 @@
+/* pagina de juego */
+
+/* va despues de tokens.css y common.css.
+   primero esta lo de celular y en el media de 48rem lo de compu */
+
+/* la pantalla de partida
+   el main de common viene centrado, aca usa todo el ancho.
+   el mapa va absoluto atras y el HUD se acomoda encima con la grid.
+   las variables son las que solo se usan en esta pagina, --progreso es
+   el 13/20 de ejemplo y el JS lo cambia cuando ya haya partida */
+.partida {
+  --anillo: 8.5rem;
+  --celda: 5rem;
+  --radio-zona: min(40vw, 28dvh);
+  --ataque: 5rem;
+  --progreso: 65%;
+  --tipo: var(--orbe-vaccine);
+  --tipo-texto: var(--color-derrota);
+
+  position: relative;
+  display: grid;
+  grid-template:
+    "tiempo tiempo" auto
+    "digimon leaderboard" auto
+    ". ." 1fr
+    "vista vista" auto
+    ". ataque" auto / minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--espacio-2);
+  min-height: 38rem;
+  max-width: none;
+  padding: var(--espacio-2);
+}
+
+
+/* el mapa
+   mientras no hay JS el fondo del canvas muestra la cuadricula y la zona.
+   lo de adentro del circulo es el color normal y lo de afuera es naranja.
+   la linea oscura es porque el naranja casi no se distingue del blanco */
+.mapa {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.mapa__lienzo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(var(--color-borde) 1px, transparent 1px) center / var(--celda) var(--celda),
+    linear-gradient(90deg, var(--color-borde) 1px, transparent 1px) center / var(--celda) var(--celda),
+    radial-gradient(circle, var(--color-fondo) calc(var(--radio-zona) - 1px), var(--color-acento-texto) var(--radio-zona) calc(var(--radio-zona) + 2px), var(--color-acento) calc(var(--radio-zona) + 3px));
+}
+
+
+/* base de los paneles del HUD
+   el fondo es para que el texto se lea aunque pase un orbe por debajo.
+   los que no tienen botones no agarran clicks para no estorbar en el mapa */
+.hud {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: var(--espacio-2);
+  font-family: var(--fuente-titulo);
+  border-radius: var(--radio);
+  background: var(--color-modal);
+}
+
+.hud:not(:has(button)) {
+  pointer-events: none;
+}
+
+
+/* tu digimon
+   el dl es plano entonces cada dato se pone a mano en la grid.
+   el aro no puede ser el progress porque ocupa prefijos, va con conic-gradient
+   y el progress queda escondido para los lectores de pantalla */
+.digimon {
+  grid-area: digimon;
+  align-self: start;
+}
+
+.digimon__datos {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: 1fr auto auto 1fr auto auto;
+  justify-content: start;
+  gap: 0 var(--espacio-1);
+  margin: 0;
+}
+
+.digimon__datos::before {
+  content: "";
+  grid-area: 1 / 1 / 5 / -1;
+  width: var(--anillo);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, var(--color-fondo) 84%, transparent 85%),
+    conic-gradient(var(--tipo) var(--progreso), var(--color-borde) 0);
+}
+
+.digimon__datos dd {
+  margin: 0;
+}
+
+/* lo que va adentro del aro */
+.digimon__etapa,
+.digimon__etiqueta,
+.digimon__puntaje,
+.digimon__evolucion {
+  grid-column: 1 / -1;
+  width: var(--anillo);
+  text-align: center;
+}
+
+.digimon__etapa {
+  grid-row: 1;
+  align-self: end;
+  font-size: var(--texto-mini);
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+}
+
+.digimon__puntaje {
+  grid-row: 2;
+  font-size: var(--titulo-2);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.digimon__etiqueta {
+  grid-row: 3;
+  font-size: var(--texto-mini);
+  color: var(--color-texto-suave);
+}
+
+.digimon__evolucion {
+  grid-row: 4;
+  font-size: var(--texto-mini);
+  font-weight: 700;
+  color: var(--tipo-texto);
+}
+
+/* abajo del aro: nombre, tipo y stats */
+.digimon__nombre {
+  grid-area: 5 / 1 / 6 / 3;
+  align-self: center;
+  margin-top: var(--espacio-1);
+  font-weight: 700;
+}
+
+/* el punto de color va junto al nombre del tipo, no solo el color */
+.digimon__tipo {
+  display: flex;
+  grid-area: 5 / 3 / 6 / 5;
+  align-items: center;
+  justify-self: start;
+  gap: var(--espacio-1);
+  margin-top: var(--espacio-1);
+  padding-inline: var(--espacio-2);
+  font-size: var(--texto-mini);
+  font-weight: 700;
+  color: var(--tipo-texto);
+  text-transform: uppercase;
+  border-radius: var(--radio-pastilla);
+  background: var(--color-fondo-suave);
+}
+
+.digimon__tipo::before {
+  content: "";
+  width: 0.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--tipo);
+}
+
+.digimon__stat {
+  grid-row: 6;
+  font-size: var(--texto-mini);
+  color: var(--color-texto-suave);
+}
+
+
+/* tiempo */
+.tiempo {
+  grid-area: tiempo;
+  place-self: start center;
+  text-align: center;
+}
+
+.tiempo__titulo {
+  margin: 0;
+  font-size: var(--texto-mini);
+  font-weight: 500;
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+}
+
+.tiempo__reloj {
+  margin: 0;
+  font-size: var(--titulo-2);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* el naranja de la paleta no da AA como texto, por eso el oscuro */
+.tiempo__zona {
+  margin: 0;
+  font-size: var(--texto-mini);
+  font-weight: 700;
+  color: var(--color-acento-texto);
+}
+
+
+/* leaderboard
+   el numero va con counter porque al poner flex el li pierde el de la lista */
+.leaderboard {
+  grid-area: leaderboard;
+  align-self: start;
+}
+
+.leaderboard__cabecera {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-2);
+  font-size: var(--texto-mini);
+}
+
+.leaderboard__titulo {
+  margin: 0;
+  font-size: inherit;
+  text-transform: uppercase;
+}
+
+.leaderboard__vivos {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.leaderboard__lista {
+  margin: var(--espacio-1) 0 0;
+  padding: 0;
+  font-size: var(--texto-chico);
+  list-style: none;
+  counter-reset: puesto;
+}
+
+.leaderboard__lista li {
+  display: flex;
+  gap: var(--espacio-2);
+  padding-inline: var(--espacio-2);
+  border-radius: var(--radio-chico);
+  counter-increment: puesto;
+}
+
+.leaderboard__lista li::before {
+  content: counter(puesto) ".";
+  font-weight: 700;
+}
+
+.leaderboard__lista data {
+  margin-left: auto;
+  color: var(--color-texto-suave);
+}
+
+/* tu fila: negrita ademas del fondo, y el texto ya dice (tú) */
+.leaderboard__lista li[aria-current="true"] {
+  font-weight: 700;
+  background: var(--color-borde);
+}
+
+/* en celular solo el top 3 y tu fila para no tapar el mapa */
+.leaderboard__lista li:nth-child(n + 4):not([aria-current="true"]) {
+  display: none;
+}
+
+/* el diseño lo tenia gris clarito y no daba contraste.
+   ya dice "eliminado", la cursiva es solo para que resalte un toque */
+.leaderboard__eliminado {
+  font-style: italic;
+  color: var(--color-texto-suave);
+}
+
+
+/* leyenda de orbes */
+.leyenda {
+  position: absolute;
+  bottom: var(--espacio-2);
+  left: var(--espacio-2);
+  max-width: calc(100% - 10rem);
+}
+
+.leyenda__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--espacio-3);
+  margin: 0;
+  font-size: var(--texto-mini);
+}
+
+.leyenda__orbe {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  margin: 0;
+}
+
+.leyenda__orbe::before {
+  content: "";
+  width: 0.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--orbe);
+}
+
+.leyenda__orbe--data {
+  --orbe: var(--orbe-data);
+}
+
+.leyenda__orbe--vaccine {
+  --orbe: var(--orbe-vaccine);
+}
+
+.leyenda__orbe--virus {
+  --orbe: var(--orbe-virus);
+}
+
+.leyenda__orbe--free {
+  --orbe: var(--orbe-free);
+}
+
+
+/* botones temporales de victoria y derrota */
+.vista-previa {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: vista;
+  place-self: end center;
+  justify-content: center;
+  gap: var(--espacio-2);
+}
+
+
+/* ataque especial
+   la onda se dispara con :active y al soltar se va con la transicion.
+   asi se ve completa aunque el tap sea rapidisimo.
+   cuando exista el JS le pone --lanzado al apretar espacio y se ve igual */
+.ataque {
+  display: grid;
+  grid-area: ataque;
+  justify-items: center;
+  place-self: end;
+  gap: var(--espacio-1);
+  max-width: 8rem;
+}
+
+.ataque__ayuda {
+  margin: 0;
+  font-size: var(--texto-mini);
+  color: var(--color-texto-suave);
+  text-align: center;
+}
+
+.ataque__boton {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--ataque);
+  aspect-ratio: 1;
+  padding: 0;
+  font-size: var(--texto-mini);
+  cursor: pointer;
+  border: 2px solid var(--color-texto);
+  border-radius: 50%;
+  background: var(--color-fondo);
+  transition: transform var(--transicion);
+}
+
+.ataque__boton::before {
+  content: "";
+  width: 1.75rem;
+  aspect-ratio: 1;
+  background: url("../assets/reglas/combate.svg") center / contain no-repeat;
+}
+
+.ataque__boton::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 4px solid var(--color-acento);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.7);
+  transition: transform 500ms ease-out, opacity 500ms ease-out;
+}
+
+.ataque__boton:active,
+.ataque__boton--lanzado {
+  transform: scale(0.92);
+}
+
+.ataque__boton:active::after,
+.ataque__boton--lanzado::after {
+  opacity: 1;
+  transform: scale(1);
+  transition: none;
+}
+
+/* el kbd de common parece tecla, en el boton va como texto normal */
+.ataque__boton kbd {
+  padding: 0;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 0;
+  background: none;
+}
+
+
+/* modales de fin de partida
+   ojo que al dialog no se le puede poner display, por eso todo va adentro.
+   cada modal define su color y el titulo y la barra de la fila lo usan */
+.fin {
+  width: min(46rem, 100% - 1rem);
+  padding: var(--espacio-3);
+  text-align: center;
+}
+
+.fin--derrota {
+  --fin: var(--color-derrota);
+}
+
+.fin--victoria {
+  --fin: var(--color-victoria);
+}
+
+.fin__cabecera {
+  margin-bottom: var(--espacio-3);
+}
+
+.fin__sprite {
+  display: block;
+  width: 8rem;
+  margin-inline: auto;
+}
+
+.fin__titulo {
+  margin: var(--espacio-2) 0 0;
+  font-size: var(--titulo-1);
+  color: var(--fin);
+}
+
+.fin__mensaje {
+  margin: var(--espacio-1) 0 0;
+  color: var(--color-texto-suave);
+}
+
+/* efectos del sprite: en derrota queda gris y en victoria brilla */
+.fin--derrota .fin__sprite {
+  filter: grayscale(1);
+}
+
+.fin--victoria .fin__sprite {
+  filter: drop-shadow(0 0 0.75rem var(--color-aviso));
+}
+
+.fin--derrota[open] .fin__sprite {
+  animation: sacudida 350ms ease-in-out 2;
+}
+
+.fin--victoria[open] .fin__sprite {
+  animation: festejo 600ms ease-out 3;
+}
+
+/* en el html va primero el dt pero el valor se ve arriba, por eso los grid-row */
+.fin__datos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--espacio-2);
+  margin: 0 0 var(--espacio-3);
+}
+
+.fin__datos dd {
+  grid-row: 1;
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-size: var(--titulo-3);
+  font-weight: 700;
+}
+
+.fin__datos dt {
+  grid-row: 2;
+  font-size: var(--texto-mini);
+  color: var(--color-texto-suave);
+}
+
+.fin__datos dd:nth-of-type(n + 3) {
+  grid-row: 3;
+  margin-top: var(--espacio-2);
+}
+
+.fin__datos dt:nth-of-type(n + 3) {
+  grid-row: 4;
+}
+
+.fin__tabla {
+  font-size: var(--texto-chico);
+}
+
+.fin__tabla th,
+.fin__tabla td {
+  padding-inline: var(--espacio-1);
+}
+
+/* las de la columna jugador son th, sin esto todas salen en negrita */
+.fin__tabla tbody th {
+  font-weight: inherit;
+}
+
+/* el puntaje alineado a la derecha para comparar mas facil */
+.fin__tabla th:nth-child(3),
+.fin__tabla td:nth-child(3) {
+  text-align: end;
+}
+
+.fin__tabla tr[aria-current="true"] > :first-child {
+  border-left-color: var(--fin);
+}
+
+/* en celular va abajo de la tabla, en compu pasa a la esquina */
+.fin__compartir {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--espacio-3);
+  border-radius: var(--radio-pastilla);
+}
+
+.fin__compartir::after {
+  content: "";
+  width: 1.125rem;
+  aspect-ratio: 1;
+  background: url("../assets/button/compartir.svg") center / contain no-repeat;
+}
+
+.fin__continuar {
+  margin: var(--espacio-3) 0 0;
+}
+
+/* el ::after estira el enlace a todo el modal, asi funciona lo de "cualquier parte" sin JS */
+.fin__continuar a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+
+/* tablet y compu: el HUD se va a las esquinas como en el diseño */
+@media (width >= 48rem) {
+  .partida {
+    --anillo: 10.5rem;
+    --radio-zona: 36dvh;
+    --ataque: 6.5rem;
+
+    grid-template:
+      "digimon tiempo leaderboard" auto
+      ". . ." 1fr
+      ". vista ataque" auto / 1fr auto 1fr;
+    padding: var(--espacio-3);
+  }
+
+  .hud {
+    padding: var(--espacio-2) var(--espacio-3);
+  }
+
+  .digimon {
+    justify-self: start;
+  }
+
+  .leaderboard {
+    justify-self: end;
+    width: 16rem;
+  }
+
+  .leaderboard__lista li:nth-child(n + 4):not([aria-current="true"]) {
+    display: flex;
+  }
+
+  .digimon__puntaje,
+  .tiempo__reloj {
+    font-size: var(--titulo-1);
+  }
+
+  /* angosta para que no choque con los botones del centro */
+  .leyenda {
+    bottom: var(--espacio-3);
+    left: var(--espacio-3);
+    max-width: 12.5rem;
+  }
+
+  .ataque {
+    max-width: 12rem;
+  }
+
+  .ataque__boton {
+    font-size: var(--texto-chico);
+  }
+
+  .fin {
+    padding: var(--espacio-5);
+  }
+
+  .fin__sprite {
+    width: 9rem;
+  }
+
+  .fin__datos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .fin__datos dd {
+    font-size: var(--titulo-2);
+  }
+
+  .fin__datos dd:nth-of-type(n + 3) {
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  .fin__datos dt:nth-of-type(n + 3) {
+    grid-row: 2;
+  }
+
+  .fin__tabla th,
+  .fin__tabla td {
+    padding-inline: var(--espacio-3);
+  }
+
+  .fin__compartir {
+    position: absolute;
+    top: var(--espacio-4);
+    right: var(--espacio-4);
+    margin-top: 0;
+  }
+}
+
+
+/* en pantalla grande ya hay campo para la leyenda en una linea */
+@media (width >= 64rem) {
+  .leyenda {
+    max-width: none;
+  }
+
+  .vista-previa {
+    flex-wrap: nowrap;
+  }
+}
+
+
+/* animaciones del sprite, el reduced-motion de common las apaga */
+@keyframes festejo {
+  40% {
+    transform: translateY(-0.75rem) scale(1.08);
+  }
+}
+
+@keyframes sacudida {
+  25% {
+    transform: translateX(-0.4rem);
+  }
+
+  75% {
+    transform: translateX(0.4rem);
+  }
+}
