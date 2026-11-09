@@ -1,0 +1,12 @@
+{
+  "name": "digivice-io",
+  "private": true,
+  "description": "Herramientas de validación del CSS de Digivice.io",
+  "scripts": {
+    "lint:css": "stylelint \"css/**/*.css\""
+  },
+  "devDependencies": {
+    "stylelint": "^18.0.0",
+    "stylelint-config-standard": "^41.0.0"
+  }
+}

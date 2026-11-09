@@ -195,6 +195,7 @@ main {
   display: flex;
   flex: 1 1 14rem;
   align-items: center;
+  min-width: 0;
   max-width: 20rem;
   margin-left: auto;
   border: var(--borde);
