@@ -1,6 +1,6 @@
 Hoja: reglas.css
 Validador: https://jigsaw.w3.org/css-validator/ (subida de archivo, perfil css3svg)
-Fecha: 2026-11-08 17:52
+Fecha: 2026-11-08 20:05
 Errores: 0
 Advertencias: 14
 - ADVERTENCIA linea 9: Due to their dynamic nature, CSS variables are currently not statically checked

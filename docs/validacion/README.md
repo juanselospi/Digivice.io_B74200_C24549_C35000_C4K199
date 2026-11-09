@@ -44,20 +44,20 @@ Las advertencias del validador son todas el aviso de que `var()` no se revisa es
 | juego.css | 0 | sin errores |
 | reglas.css | 0 | sin errores |
 | creditos.css | 0 | sin errores |
-| lobby.css | pendiente, aún no existe | pendiente |
-| acerca.css | pendiente, aún no existe | pendiente |
+| lobby.css | 0 | sin errores |
+| acerca.css | 0 | sin errores |
 
 ## Revisión de accesibilidad y responsive
 
-Revisión automática en Chromium (axe-core con reglas WCAG A y AA, recorrido con Tab, `prefers-reduced-motion` emulado y anchos de 320, 768 y 1280 px).
+Revisión en Chromium de las 6 páginas: axe-core (WCAG A y AA), recorrido con Tab, modales con teclado, `prefers-reduced-motion` emulado, vista sin color (acromatopsia) y anchos de 320, 768 y 1280 px. El contraste que axe no pudo decidir en Juego y Lobby se midió contra los píxeles del fondo, a 320 y 1280 px.
 
-| Página | Hoja propia | Violaciones axe | Foco visible | Movimiento reducido | Desborde horizontal |
+| Página | Contraste AA | Teclado y foco | Movimiento reducido | Responsive | Sin depender del color |
 | :---- | :---- | :---- | :---- | :---- | :---- |
-| Inicio | sí | 0 | sí | sin animaciones | 13 px a 320 px, pendiente |
-| Juego | sí | 0 | sí | sin animaciones | no |
-| Reglas | sí | 0 | sí | sin animaciones | no |
-| Créditos | sí | 0 | sí | sin animaciones | no |
-| Lobby | pendiente | 0 | sí | sin animaciones | no |
-| Acerca de | pendiente | 0 | sí | sin animaciones | no |
+| Inicio | cumple | cumple | cumple | **pendiente:** desborda 13 px a 320 px | cumple |
+| Lobby | cumple | cumple | cumple | cumple | cumple |
+| Juego | cumple (mínimo 5.76:1) | cumple | cumple | **pendiente:** a 320 px el HUD tapa parte del mapa | cumple |
+| Reglas | cumple | cumple | cumple | cumple | cumple |
+| Acerca de | cumple | cumple | cumple | cumple | cumple |
+| Créditos | cumple | cumple | cumple | cumple | cumple |
 
-Lobby y Acerca de se revisaron sin su hoja, hay que repetir la revisión cuando existan. En Juego (32 elementos) y Lobby (4) axe no pudo determinar el contraste y queda por revisar a mano, igual que la regla de no transmitir información solo con color.
+Los 7 modales (Lobby, Reglas y Juego) abren con Enter, mantienen el foco adentro, cierran con Esc y devuelven el foco al botón que los abrió.
