@@ -1,0 +1,29 @@
+Hoja: lobby.css
+Validador: https://jigsaw.w3.org/css-validator/ (subida de archivo, perfil css3svg)
+Fecha: 2026-11-08 20:05
+Errores: 0
+Advertencias: 24
+- ADVERTENCIA linea 21: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 28: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 47: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 56: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 70: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 77: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 86: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 88: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 89: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 95: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 106: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 111: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 128: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 169: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 173: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 177: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 182: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 187: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 195: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 204: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 211: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 231: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 235: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 240: Due to their dynamic nature, CSS variables are currently not statically checked

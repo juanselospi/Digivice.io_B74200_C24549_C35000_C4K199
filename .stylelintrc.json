@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      { "message": "Las clases van en formato BEM: bloque__elemento--modificador" }
+    ],
+    "selector-pseudo-element-disallowed-list": [
+      ["/^-(webkit|moz|ms|o)-/"],
+      { "message": "No se permiten pseudo-elementos con prefijo de navegador" }
+    ]
+  }
+}

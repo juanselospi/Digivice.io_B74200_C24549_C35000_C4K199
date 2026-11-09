@@ -1,0 +1,242 @@
+/* pagina de lobby */
+
+/* va despues de tokens.css y common.css.
+   en el diseño el lobby es el mapa con el tutorial encima, pero lobby.html es
+   una tabla, asi que se deja el fondo de cuadricula del mapa y lo demas va en
+   tarjetas. una columna en celular y dos de 48rem para arriba */
+
+/* el main de common viene centrado, aca ocupa todo el ancho para que la
+   cuadricula llegue a los bordes, y el padding centra el contenido */
+.lobby {
+  --celda: 5rem;
+
+  display: grid;
+  grid-template-areas:
+    "titulo"
+    "tiempo"
+    "jugadores"
+    "controles"
+    "acciones";
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-4);
+  align-content: start;
+  max-width: none;
+  padding-inline: max(var(--margen-lateral), (100% - var(--ancho-contenido)) / 2);
+  background:
+    linear-gradient(var(--color-borde) 1px, transparent 1px) center / var(--celda) var(--celda),
+    linear-gradient(90deg, var(--color-borde) 1px, transparent 1px) center / var(--celda) var(--celda),
+    var(--color-fondo-suave);
+}
+
+.lobby > h1 {
+  grid-area: titulo;
+  margin: 0;
+  text-align: center;
+}
+
+
+/* tiempo para iniciar
+   la etiqueta chiquita en mayuscula y el numero grande, como en el diseño */
+.lobby__tiempo {
+  grid-area: tiempo;
+  text-align: center;
+}
+
+.lobby__tiempo h2 {
+  margin: 0;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.lobby__tiempo p {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* jugadores conectados
+   en celular la tabla no cabia con el padding normal, se achica la letra y
+   el padding. el overflow es por si un nickname largo no entra */
+.lobby__jugadores {
+  grid-area: jugadores;
+  min-width: 0;
+  padding: var(--espacio-3) var(--espacio-2);
+  overflow-x: auto;
+}
+
+.lobby__jugadores h2,
+.lobby__controles h2 {
+  margin-top: 0;
+  font-size: var(--titulo-3);
+}
+
+/* cupo de la sala: etiqueta, barra y el texto con los numeros.
+   el meter queda con el estilo del navegador, solo se le cambia el tamaño,
+   porque pintarlo distinto pide ::-webkit-meter-bar y eso no se puede */
+.lobby__cupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1) var(--espacio-3);
+  align-items: center;
+  margin-block: 0 var(--espacio-4);
+  font-size: var(--texto-chico);
+  color: var(--color-texto-suave);
+}
+
+.lobby__cupo label {
+  flex-basis: 100%;
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.lobby__cupo meter {
+  flex: 1 1 8rem;
+  height: 0.75rem;
+}
+
+.lobby__jugadores table {
+  font-size: var(--texto-chico);
+}
+
+.lobby__jugadores th,
+.lobby__jugadores td {
+  padding-inline: var(--espacio-1);
+}
+
+
+/* estado de cada jugador
+   ademas del color, listo lleva un circulo lleno y esperando uno punteado
+   que gira, asi no depende solo del color (y el texto ya lo dice).
+   es un td, por eso nada de flex aca, se rompe la tabla */
+.estado {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.estado::before {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: var(--espacio-2);
+  vertical-align: -0.05em;
+  content: "";
+  border: 2px solid currentcolor;
+  border-radius: 50%;
+}
+
+.estado--listo {
+  color: var(--color-victoria);
+}
+
+.estado--listo::before {
+  background: currentcolor;
+}
+
+.estado--esperando {
+  color: var(--color-acento-texto);
+}
+
+.estado--esperando::before {
+  border-style: dashed;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .estado--esperando::before {
+    animation: girar 3s linear infinite;
+  }
+}
+
+@keyframes girar {
+  to {
+    rotate: 1turn;
+  }
+}
+
+
+/* controles
+   amarillo como las tarjetas del tutorial del diseño */
+.lobby__controles {
+  grid-area: controles;
+  border-color: transparent;
+  background: var(--color-aviso);
+}
+
+.lobby__controles dl {
+  margin: 0 0 var(--espacio-4);
+}
+
+.lobby__controles dt {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+}
+
+.lobby__controles dd {
+  margin: var(--espacio-1) 0 var(--espacio-3);
+}
+
+/* el modal del mini tutorial, un poco de aire entre cada parte */
+.lobby dialog h4 {
+  margin: var(--espacio-4) 0 var(--espacio-1);
+}
+
+.lobby dialog p {
+  margin: 0;
+}
+
+.lobby dialog form {
+  margin-top: var(--espacio-4);
+}
+
+
+/* listo y entrar */
+.lobby__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: acciones;
+  gap: var(--espacio-3);
+  justify-content: center;
+  margin: 0;
+}
+
+/* sobre la cuadricula el boton de borde se perdia, va con fondo blanco */
+.lobby__acciones .boton--borde {
+  background: var(--color-fondo);
+}
+
+
+/* compu: jugadores a la izquierda y controles a la derecha */
+@media (width >= 48rem) {
+  .lobby {
+    grid-template-areas:
+      "titulo titulo"
+      "tiempo tiempo"
+      "jugadores controles"
+      "acciones acciones";
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  .lobby__tiempo p {
+    font-size: 4rem;
+  }
+
+  .lobby__jugadores {
+    padding: var(--espacio-4);
+  }
+
+  .lobby__jugadores table {
+    font-size: var(--texto-normal);
+  }
+
+  .lobby__jugadores th,
+  .lobby__jugadores td {
+    padding-inline: var(--espacio-3);
+  }
+}

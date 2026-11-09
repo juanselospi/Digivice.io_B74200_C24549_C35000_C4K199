@@ -24,3 +24,40 @@ bash docs/validacion/validar.sh
 ```
 
 El script manda cada `.html` de la raíz (menos `plantilla.html`) al validador y guarda el resultado en `resultados/<pagina>.txt`.
+
+## Validación del CSS
+
+Las hojas se suben como archivo al [validador CSS de la W3C](https://jigsaw.w3.org/css-validator/) (no por URL, porque el PR no se fusiona) y se pasan por stylelint. Resultados en [resultados/css/](resultados/css/).
+
+```bash
+npm install
+bash docs/validacion/validar-css.sh
+```
+
+Las advertencias del validador son todas el aviso de que `var()` no se revisa estáticamente.
+
+| Hoja | Errores W3C | stylelint |
+| :---- | :---- | :---- |
+| tokens.css | 0 | sin errores |
+| common.css | 0 | sin errores |
+| index.css | 0 | sin errores |
+| juego.css | 0 | sin errores |
+| reglas.css | 0 | sin errores |
+| creditos.css | 0 | sin errores |
+| lobby.css | 0 | sin errores |
+| acerca.css | 0 | sin errores |
+
+## Revisión de accesibilidad y responsive
+
+Revisión en Chromium de las 6 páginas: axe-core (WCAG A y AA), recorrido con Tab, modales con teclado, `prefers-reduced-motion` emulado, vista sin color (acromatopsia) y anchos de 320, 768 y 1280 px. El contraste que axe no pudo decidir en Juego y Lobby se midió contra los píxeles del fondo, a 320 y 1280 px.
+
+| Página | Contraste AA | Teclado y foco | Movimiento reducido | Responsive | Sin depender del color |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Inicio | cumple | cumple | cumple | **pendiente:** desborda 13 px a 320 px | cumple |
+| Lobby | cumple | cumple | cumple | cumple | cumple |
+| Juego | cumple (mínimo 5.76:1) | cumple | cumple | **pendiente:** a 320 px el HUD tapa parte del mapa | cumple |
+| Reglas | cumple | cumple | cumple | cumple | cumple |
+| Acerca de | cumple | cumple | cumple | cumple | cumple |
+| Créditos | cumple | cumple | cumple | cumple | cumple |
+
+Los 7 modales (Lobby, Reglas y Juego) abren con Enter, mantienen el foco adentro, cierran con Esc y devuelven el foco al botón que los abrió.
