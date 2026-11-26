@@ -145,6 +145,11 @@ Se puede probar con `juego.html?nickname=TuNombre`.
 | `js/entrada.js` | Flechas/WASD, espacio, tap en el mapa y el botón del especial. Se guarda en `estado.entrada`. |
 | `js/partida.js` | Reloj, fin de partida (tiempo agotado o un solo vivo), ganador y `clasificacion()` para las tablas. |
 | `js/main.js` | Setup con `addEventListener` y el loop con `requestAnimationFrame`. |
+| `js/geometria.js` | Distancias, direcciones y puntos al azar dentro de un circulo. |
+| `js/progreso.js` | `radioJugador()` (tamaño segun el hp), puntaje y barra de evolucion. |
+| `js/orbes.js` | Orbes que salen dentro de la zona segura y se recogen al tocarlos. |
+| `js/movimiento.js` | Mueve a cada jugador segun su `intencion` sin salirse del mapa. |
+| `js/bots.js` | IA de los bots: vuelven a la zona, huyen, persiguen o van por orbes. |
 
 ### Reglas para sumar un módulo
 
