@@ -131,3 +131,30 @@ Carpetas de apoyo:
 5. Pasar la página por el [validador de la W3C](https://validator.w3.org/) antes de hacer merge a `main` (o correr `bash docs/validacion/validar.sh`).
 
 Esta entrega es solo HTML. El CSS y el JS vienen en las siguientes.
+
+## 8\. JavaScript del juego
+
+Todo el JS está en `js/` y se carga desde `juego.html` como módulo (`<script type="module" src="js/main.js" async>`).
+Por ser módulo, la página no abre con doble clic (`file://`); hay que servirla, por ejemplo con `python3 -m http.server` o Live Server de VS Code.
+Se puede probar con `juego.html?nickname=TuNombre`.
+
+| Archivo | Qué hace |
+| :---- | :---- |
+| `js/config.js` | Constantes de las reglas (etapas 8/12/16 % y 4/8/12 %, duración, mapa, zona). |
+| `js/estado.js` | `crearEstadoInicial()`, los `@typedef` de todos los tipos y ayudas (`registrarEvento`, `jugadorLocal`, `nuevoId`). |
+| `js/entrada.js` | Flechas/WASD, espacio, tap en el mapa y el botón del especial. Se guarda en `estado.entrada`. |
+| `js/partida.js` | Reloj, fin de partida (tiempo agotado o un solo vivo), ganador y `clasificacion()` para las tablas. |
+| `js/main.js` | Setup con `addEventListener` y el loop con `requestAnimationFrame`. |
+
+### Reglas para sumar un módulo
+
+- Hay **un solo objeto `estado`** (ver `EstadoJuego` en `estado.js`). Nada de variables globales sueltas con datos de la partida.
+- Los módulos de **lógica** exportan una función `(estado, dt) => void` que solo cambia el estado y nunca toca el DOM.
+- Los módulos de **vista** exportan una función `(estado) => void` que solo lee el estado y dibuja.
+- Para conectarlo, se importa en `main.js` y se agrega en su lugar de `PASOS_LOGICA` o `PASOS_VISTA` (ya hay un comentario por persona).
+- Cada jugador tiene su `intencion` (`dx`, `dy`, `especial`): la del local la llena `entrada.js` y la de los bots la llena `bots.js`. El movimiento y el especial leen solo `jugador.intencion`.
+- Para la realimentación se usa `registrarEvento(estado, 'golpe', jugadorId, otroId)`. Los eventos se borran al empezar cada cuadro, así `feedback.js` ve cada uno una sola vez.
+- Los ids nuevos de orbes y proyectiles salen de `nuevoId(estado)`.
+- Cuando alguien queda eliminado: `vivo = false`, `hp = 0` y `eliminadoEn = tiempoTranscurrido(estado)`, para que la clasificación salga bien.
+- Las constantes nuevas van en `config.js`, en la sección que corresponde.
+- Antes de cada PR: `npm install` (una vez) y `npm run lint:js`, que tiene que pasar sin errores.

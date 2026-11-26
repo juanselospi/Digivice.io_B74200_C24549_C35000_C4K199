@@ -46,6 +46,9 @@
   display: block;
   width: 100%;
   height: 100%;
+
+  /* para que arrastrar el dedo mueva al Digimon y no la pagina */
+  touch-action: none;
   background:
     linear-gradient(var(--color-borde) 1px, transparent 1px) center / var(--celda) var(--celda),
     linear-gradient(90deg, var(--color-borde) 1px, transparent 1px) center / var(--celda) var(--celda),
