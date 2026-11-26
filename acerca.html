@@ -9,13 +9,19 @@
   <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/acerca.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">
+  <header class="encabezado">
+    <a class="encabezado__logo" href="index.html">
       <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
     </a>
-    <nav aria-label="Menú principal">
+    <nav class="menu" aria-label="Menú principal">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="reglas.html">Reglas</a></li>
@@ -23,29 +29,29 @@
       </ul>
     </nav>
     <!-- buscador por ahora es solo estetico -->
-    <form role="search">
-      <label for="buscar">Buscar</label>
+    <form class="buscador" role="search">
+      <label class="solo-lectores" for="buscar">Buscar</label>
       <input type="search" id="buscar" name="q" placeholder="Buscar">
-      <button type="submit">Buscar</button>
+      <button class="buscador__boton" type="submit">Buscar</button>
     </form>
   </header>
 
-  <main>
-    <p>Acerca de nosotros</p>
+  <main class="acerca">
+    <p class="acerca__etiqueta">Acerca de nosotros</p>
     <h1>El equipo detrás de Digivice.io</h1>
-    <p>Somos cuatro estudiantes de la Escuela de Ciencias de la Computación e Informática de la UCR. Digivice.io es nuestro proyecto del curso CI-0137: un juego multijugador en tiempo real donde cada jugador controla un Digimon, recolecta data, evoluciona y compite por ser el último en pie.</p>
+    <p class="acerca__intro">Somos cuatro estudiantes de la Escuela de Ciencias de la Computación e Informática de la UCR. Digivice.io es nuestro proyecto del curso CI-0137: un juego multijugador en tiempo real donde cada jugador controla un Digimon, recolecta data, evoluciona y compite por ser el último en pie.</p>
 
-    <section>
+    <section class="tarjeta acerca__bloque">
       <h2>Misión</h2>
       <p>Crear un juego multijugador sencillo y accesible desde el navegador, donde cualquier persona pueda entrar a una partida rápida y competir con sus amigos sin instalar nada.</p>
     </section>
 
-    <section>
+    <section class="tarjeta acerca__bloque">
       <h2>Visión</h2>
       <p>Que Digivice.io sea un juego estable y divertido que soporte partidas de hasta 32 jugadores, manteniendo una experiencia fluida tanto en computadora como en móvil.</p>
     </section>
 
-    <section>
+    <section class="acerca__valores">
       <h2>Valores</h2>
       <dl>
         <dt>Trabajo en equipo</dt>
@@ -59,39 +65,43 @@
       </dl>
     </section>
 
-    <section>
+    <section class="acerca__equipo">
       <h2>Integrantes</h2>
 
-      <article>
+      <article class="tarjeta integrante">
+        <img class="integrante__foto" src="assets/digishell/3%20-%20Agumon%20EX/Agumon/c0189_0.png" alt="" width="96" height="96">
         <h3>Jeferson Marín</h3>
-        <p>Frontend / maquetado</p>
-        <p><a href="https://github.com/jefer30039">Perfil de GitHub</a></p>
+        <p class="integrante__rol">Frontend / maquetado</p>
+        <p class="integrante__enlace"><a href="https://github.com/jefer30039">Perfil de GitHub</a></p>
       </article>
 
-      <article>
+      <article class="tarjeta integrante">
+        <img class="integrante__foto" src="assets/digishell/4%20-%20Gabumon%20EX/Gabumon/c0206_0.png" alt="" width="96" height="96">
         <h3>Agustín Soto</h3>
-        <p>Cliente / lógica de juego</p>
-        <p><a href="https://github.com/Agussoto48">Perfil de GitHub</a></p>
+        <p class="integrante__rol">Cliente / lógica de juego</p>
+        <p class="integrante__enlace"><a href="https://github.com/Agussoto48">Perfil de GitHub</a></p>
       </article>
 
-      <article>
+      <article class="tarjeta integrante">
+        <img class="integrante__foto" src="assets/digishell/3%20-%20Agumon%20EX/Koromon/c0188_0.png" alt="" width="96" height="96">
         <h3>Albin Monge Arias</h3>
-        <p>Servidor / comunicación</p>
-        <p><a href="https://github.com/albin-monge-arias">Perfil de GitHub</a></p>
+        <p class="integrante__rol">Servidor / comunicación</p>
+        <p class="integrante__enlace"><a href="https://github.com/albin-monge-arias">Perfil de GitHub</a></p>
       </article>
 
-      <article>
+      <article class="tarjeta integrante">
+        <img class="integrante__foto" src="assets/digishell/4%20-%20Gabumon%20EX/Tsunomon/c0205_0.png" alt="" width="96" height="96">
         <h3>Juan Loaiza</h3>
-        <p>Diseño / QA / coordinación</p>
-        <p><a href="https://github.com/juanselospi">Perfil de GitHub</a></p>
+        <p class="integrante__rol">Diseño / QA / coordinación</p>
+        <p class="integrante__enlace"><a href="https://github.com/juanselospi">Perfil de GitHub</a></p>
       </article>
     </section>
 
-    <section>
+    <section class="acerca__proyecto">
       <h2>Sobre el proyecto</h2>
       <p>Digivice.io toma la base de Agar.io y le suma un sistema propio de evolución por tipo de data, combate por contacto según la etapa, un ataque especial que cuesta vida y una zona segura que se reduce durante la partida.</p>
       <p><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Ver el repositorio en GitHub</a></p>
-      <dl>
+      <dl class="acerca__datos">
         <dt>Curso</dt>
         <dd>CI-0137 Desarrollo de Aplicaciones Web</dd>
         <dt>Profesora</dt>
@@ -104,14 +114,14 @@
     </section>
   </main>
 
-  <footer>
-    <p><small>© 2026 Digivice.io</small></p>
+  <footer class="pie">
+    <p class="pie__marca"><small>© 2026 Digivice.io</small></p>
     <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
     <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
     <nav aria-label="Enlaces del pie de página">
       <ul>
-        <li><a href="creditos.html">Créditos</a></li>
-        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+        <li><a class="pie__enlace" href="creditos.html">Créditos</a></li>
+        <li><a class="pie__enlace" href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
       </ul>
     </nav>
   </footer>

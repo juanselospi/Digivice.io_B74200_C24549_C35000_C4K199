@@ -1,0 +1,107 @@
+/* pagina de creditos */
+
+/* va despues de tokens.css y common.css */
+
+.creditos > section {
+  margin-top: var(--espacio-6);
+}
+
+.creditos h1 {
+  margin-top: 0;
+}
+
+.creditos > p {
+  max-width: 65ch;
+  color: var(--color-texto-suave);
+}
+
+/* tarjetas: una columna en celular y las que quepan en pantallas anchas */
+.creditos__grupo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--espacio-4);
+}
+
+.creditos__grupo > h2 {
+  grid-column: 1 / -1;
+  margin-block: 0;
+}
+
+.credito {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  transition: border-color var(--transicion);
+}
+
+.credito:hover {
+  border-color: var(--color-marca);
+}
+
+.credito > * {
+  margin-block: 0;
+}
+
+/* imagenes sobre un fondo suave, para que todas las tarjetas se vean parejas */
+.credito__imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-3);
+  min-height: 10rem;
+  margin: 0;
+  padding: var(--espacio-3);
+  border-radius: var(--radio-chico);
+  background: var(--color-fondo-suave);
+}
+
+.credito__imagenes img {
+  filter: drop-shadow(0 0.25rem 0.25rem rgb(0 0 0 / 25%));
+  transition: transform var(--transicion);
+}
+
+.credito__imagenes figcaption {
+  flex-basis: 100%;
+  font-size: var(--texto-chico);
+  color: var(--color-texto-suave);
+  text-align: center;
+}
+
+/* el efecto solo aplica con mouse y si no se pidio reducir movimiento */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .credito:hover .credito__imagenes img {
+    transform: scale(1.08) rotate(-2deg);
+  }
+}
+
+.credito code {
+  overflow-wrap: anywhere;
+}
+
+/* autor, fuente y licencia */
+.credito dl {
+  margin-block: 0;
+}
+
+.credito dt {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+}
+
+.credito dd {
+  margin: 0 0 var(--espacio-2);
+  overflow-wrap: anywhere;
+}
+
+.credito dd:last-child {
+  margin-bottom: 0;
+}
+
+.creditos__herramientas {
+  padding-left: var(--espacio-4);
+}
+
+.creditos__herramientas li + li {
+  margin-top: var(--espacio-2);
+}

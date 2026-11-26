@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Digivice.io — CI-0137
+   Paleta y tokens del diseño
+
+   Cada valor se declara una sola vez acá y se usa con var(--nombre) en todo
+   el sitio. Este archivo se enlaza antes que common.css y solo tiene :root.
+
+   La paleta se generó con Adobe Color a partir del frame de la partida
+   (evidencia en docs/paleta/). Los colores que no salen de ahí llevan su
+   motivo al lado. Si cambiás alguno, volvé a revisar el contraste.
+   ========================================================================== */
+
+:root {
+  /* --- Tipografía -------------------------------------------------------- */
+  --fuente-titulo: "Chakra Petch", system-ui, sans-serif;  /* títulos, nav,
+                                                              botones y HUD */
+  --fuente-texto:  "Inter", system-ui, sans-serif;         /* párrafos, tablas
+                                                              y reglas */
+
+  /* Tamaños medidos en los frames (aproximados). El h1 crece con la
+     pantalla: 2rem en móvil y 2.75rem en escritorio. */
+  --texto-mini:             0.75rem;   /* etiquetas en mayúscula */
+  --texto-chico:            0.875rem;  /* pie, encabezados de tabla */
+  --texto-normal:           1rem;
+  --titulo-3:               1.125rem;
+  --titulo-2:               1.5rem;
+  --titulo-1:               clamp(2rem, 1.25rem + 2.5vw, 2.75rem);
+  --interlineado:           1.5;
+  --interlineado-titulo:    1.15;
+
+  /* --- Texto -------------------------------------------------------------
+     Contraste AA: al menos 4.5:1 sobre todas las superficies de abajo. */
+  --color-texto:            #000;
+  --color-texto-suave:      #333;
+  --color-texto-invertido:  #fff;  /* sobre --color-marca: 6.5:1 */
+
+  /* --- Superficies ------------------------------------------------------- */
+  --color-fondo:            #fff;
+  --color-fondo-suave:      #f4f4f2;  /* footer y buscador */
+  --color-mapa:             #f2eae4;  /* zona insegura del mapa */
+  --color-modal:            rgb(255 255 255 / 90%);  /* semitransparente: con
+                                                        90 % el texto cumple AA
+                                                        aunque detrás haya negro */
+  --color-overlay:          rgb(0 0 0 / 60%);  /* detrás de los modales */
+  --color-borde:            #d8d8d6;
+
+  /* --- Marca y acciones -------------------------------------------------- */
+  --color-marca:            #625a6f;  /* botón principal y foco */
+  --color-foco:             var(--color-marca);
+  --color-acento:           #f28a2e;  /* solo gráfico: subrayado del nav,
+                                         borde de la zona segura */
+  --color-acento-texto:     #964d05;  /* el acento no llega a AA como texto */
+  --color-aviso:            #f2b705;  /* tarjetas del tutorial, con
+                                         --color-texto encima */
+
+  /* --- Fin de partida ---------------------------------------------------- */
+  --color-victoria:         #1b6e2a;  /* verde del diseño, oscurecido */
+  --color-derrota:          #b71c1c;  /* #d93232 de la paleta, oscurecido;
+                                         los dos para cumplir AA sobre
+                                         --color-modal */
+
+  /* --- Orbes -------------------------------------------------------------
+     Solo gráficos: siempre van junto al nombre del tipo de data, nunca
+     llevan texto encima. */
+  --orbe-data:              #42a048;  /* del diseño, no está en la paleta */
+  --orbe-vaccine:           #d93232;
+  --orbe-virus:             #8844a6;
+  --orbe-free:              #4fc3f6;  /* del diseño, no está en la paleta */
+
+  /* --- Medidas repetidas ------------------------------------------------- */
+  --radio-chico:            0.5rem;   /* botones e inputs */
+  --radio:                  1rem;     /* tarjetas */
+  --radio-grande:           1.5rem;   /* modales */
+  --radio-pastilla:         999px;    /* buscador y etiquetas */
+  --borde:                  1px solid var(--color-borde);
+
+  /* --- Espacios y anchos ------------------------------------------------- */
+  --espacio-1:              0.25rem;
+  --espacio-2:              0.5rem;
+  --espacio-3:              1rem;
+  --espacio-4:              1.5rem;
+  --espacio-5:              2rem;
+  --espacio-6:              3rem;
+  --ancho-contenido:        70rem;  /* unos 1120 px, como en los frames */
+  --margen-lateral:         clamp(1rem, 4vw, 2.5rem);
+
+  /* --- Efectos y movimiento ---------------------------------------------- */
+  --sombra-modal:           0 1rem 3rem rgb(0 0 0 / 30%);
+  --transicion:             200ms ease;
+  --foco:                   3px solid var(--color-foco);
+}

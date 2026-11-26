@@ -10,29 +10,35 @@
   <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/lobby.css">
 </head>
 <body>
   <!-- header de partida, igual al de juego -->
-  <header>
-    <a href="index.html">
+  <header class="encabezado encabezado--partida">
+    <a class="encabezado__logo" href="index.html">
       <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
     </a>
-    <p>Sala ABC123</p>
-    <p>3 de 6 jugadores</p>
-    <a href="index.html">Salir de la sala</a>
+    <p class="encabezado__dato">Sala ABC123</p>
+    <p class="encabezado__dato encabezado__dato--suave">3 de 6 jugadores</p>
+    <a class="boton boton--borde" href="index.html">Salir de la sala</a>
   </header>
 
-  <main>
+  <main class="lobby">
     <h1>Sala de espera</h1>
 
-    <section>
+    <section class="lobby__tiempo">
       <h2>Tiempo para iniciar partida</h2>
       <p><time datetime="PT59S">00:59</time></p>
     </section>
 
-    <section>
+    <section class="tarjeta lobby__jugadores">
       <h2>Jugadores conectados</h2>
-      <p>
+      <p class="lobby__cupo">
         <label for="cupo">Cupo de la sala</label>
         <meter id="cupo" min="0" max="6" low="2" optimum="6" value="3">3 de 6</meter>
         3 de 6 jugadores, mínimo 2 para empezar
@@ -47,14 +53,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr aria-current="true"><th scope="row">Nickname (tú)</th><td>Agumon</td><td>Listo</td></tr>
-          <tr><th scope="row">Bot_1</th><td>Agumon</td><td>Listo</td></tr>
-          <tr><th scope="row">Bot_2</th><td>Gabumon</td><td>Esperando</td></tr>
+          <tr aria-current="true"><th scope="row">Nickname (tú)</th><td>Agumon</td><td class="estado estado--listo">Listo</td></tr>
+          <tr><th scope="row">Bot_1</th><td>Agumon</td><td class="estado estado--listo">Listo</td></tr>
+          <tr><th scope="row">Bot_2</th><td>Gabumon</td><td class="estado estado--esperando">Esperando</td></tr>
         </tbody>
       </table>
     </section>
 
-    <section>
+    <section class="tarjeta lobby__controles">
       <h2>Controles</h2>
       <dl>
         <dt>Mover tu Digimon</dt>
@@ -66,7 +72,7 @@
       </dl>
 
       <!-- en el juego se abre con Tab-->
-      <button type="button" command="show-modal" commandfor="tutorial">Ver mini-tutorial</button>
+      <button class="boton boton--borde" type="button" command="show-modal" commandfor="tutorial">Ver mini-tutorial</button>
       <dialog id="tutorial" aria-labelledby="titulo-tutorial" closedby="any">
         <h3 id="titulo-tutorial">Mini-tutorial</h3>
         <h4>Evolución</h4>
@@ -78,24 +84,24 @@
         <h4>Ataque especial</h4>
         <p>Presiona <kbd>Espacio</kbd> para atacar a distancia. Atacar consume parte de tu vida.</p>
         <form method="dialog">
-          <button>Cerrar</button>
+          <button class="boton">Cerrar</button>
         </form>
       </dialog>
     </section>
 
-    <p>
-      <button type="button">Estoy listo</button>
-      <a href="juego.html">Entrar a la partida</a>
+    <p class="lobby__acciones">
+      <button class="boton" type="button">Estoy listo</button>
+      <a class="boton boton--borde" href="juego.html">Entrar a la partida</a>
     </p>
   </main>
 
   <!-- footer corto de partida -->
-  <footer>
-    <p><small>© 2026 Digivice.io</small></p>
+  <footer class="pie pie--corto">
+    <p class="pie__marca"><small>© 2026 Digivice.io</small></p>
     <nav aria-label="Enlaces del pie de página">
       <ul>
-        <li><a href="creditos.html">Créditos</a></li>
-        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+        <li><a class="pie__enlace" href="creditos.html">Créditos</a></li>
+        <li><a class="pie__enlace" href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
       </ul>
     </nav>
   </footer>

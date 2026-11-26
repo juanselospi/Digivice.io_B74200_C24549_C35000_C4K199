@@ -9,13 +9,19 @@
   <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/creditos.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">
+  <header class="encabezado">
+    <a class="encabezado__logo" href="index.html">
       <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
     </a>
-    <nav aria-label="Menú principal">
+    <nav class="menu" aria-label="Menú principal">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="reglas.html">Reglas</a></li>
@@ -23,24 +29,24 @@
       </ul>
     </nav>
     <!-- buscador -->
-    <form role="search">
-      <label for="buscar">Buscar</label>
+    <form class="buscador" role="search">
+      <label class="solo-lectores" for="buscar">Buscar</label>
       <input type="search" id="buscar" name="q" placeholder="Buscar">
-      <button type="submit">Buscar</button>
+      <button class="buscador__boton" type="submit">Buscar</button>
     </form>
   </header>
 
-  <main>
+  <main class="creditos">
     <h1>Créditos</h1>
     <p>Digivice.io es un proyecto académico sin fines de lucro. En esta página reconocemos a los autores de las imágenes y recursos externos que usamos, junto con su fuente y su licencia.</p>
 
     <!-- articles con un dl de autor, fuente y licencia -->
-    <section aria-labelledby="titulo-imagenes">
+    <section class="creditos__grupo" aria-labelledby="titulo-imagenes">
       <h2 id="titulo-imagenes">Imágenes y sprites</h2>
 
-      <article>
+      <article class="tarjeta credito">
         <h3>Sprites de Digimon</h3>
-        <figure>
+        <figure class="credito__imagenes">
           <img src="assets/digishell/3%20-%20Agumon%20EX/Agumon/c0189_0.png" alt="Sprite de Agumon" width="96" height="96">
           <img src="assets/digishell/4%20-%20Gabumon%20EX/Gabumon/c0206_0.png" alt="Sprite de Gabumon" width="96" height="96">
           <figcaption>Agumon y Gabumon, los Digimon que se pueden elegir en la página de inicio.</figcaption>
@@ -54,9 +60,9 @@
         </dl>
       </article>
 
-      <article>
+      <article class="tarjeta credito">
         <h3>Logo de Digivice.io</h3>
-        <figure>
+        <figure class="credito__imagenes">
           <img src="assets/logo/rebranding.png" alt="Logo de Digivice.io" width="320" height="64">
           <figcaption>Logo usado en el encabezado y en la página de inicio.</figcaption>
         </figure>
@@ -70,9 +76,9 @@
         </dl>
       </article>
 
-      <article>
+      <article class="tarjeta credito">
         <h3>Favicon e ícono del Digivice</h3>
-        <figure>
+        <figure class="credito__imagenes">
           <img src="assets/icon/favicon-512.png" alt="Silueta de un Digivice usada como favicon" width="64" height="64">
           <figcaption>Favicon del sitio en todas las páginas.</figcaption>
         </figure>
@@ -89,16 +95,16 @@
 
     <section aria-labelledby="titulo-fuentes">
       <h2 id="titulo-fuentes">Fuentes tipográficas e íconos</h2>
-      <p>Por ahora el sitio no carga fuentes tipográficas ni conjuntos de íconos externos.</p>
+      <p>Las fuentes <a href="https://fonts.google.com/specimen/Chakra+Petch">Chakra Petch</a> (Cadson Demak) e <a href="https://fonts.google.com/specimen/Inter">Inter</a> (Rasmus Andersson) se cargan desde Google Fonts y tienen licencia SIL Open Font License 1.1. El sitio no usa conjuntos de íconos externos.</p>
     </section>
 
-    <section aria-labelledby="titulo-inspiracion">
+    <section class="creditos__grupo" aria-labelledby="titulo-inspiracion">
       <h2 id="titulo-inspiracion">Inspiración y marcas</h2>
-      <article>
+      <article class="tarjeta credito">
         <h3>Agar.io</h3>
         <p>La mecánica de movimiento libre, crecimiento y competencia de Digivice.io está inspirada en <a href="https://agar.io/"><cite>Agar.io</cite></a>, creado por Matheus Valadares y publicado por Miniclip.</p>
       </article>
-      <article>
+      <article class="tarjeta credito">
         <h3>Digimon</h3>
         <p><cite>Digimon</cite>, sus personajes y el Digivice son marcas registradas de Bandai y Toei Animation. Este sitio es un trabajo de fans hecho para un curso universitario y no tiene relación oficial con esas empresas.</p>
       </article>
@@ -106,7 +112,7 @@
 
     <section aria-labelledby="titulo-herramientas">
       <h2 id="titulo-herramientas">Herramientas</h2>
-      <ul>
+      <ul class="creditos__herramientas">
         <li><a href="https://www.figma.com/">Figma</a>: mapa del sitio, wireframes y wireflow.</li>
         <li><a href="https://validator.w3.org/">Validador de la W3C</a>: validación del HTML de todas las páginas.</li>
         <li><a href="https://pages.github.com/">GitHub Pages</a>: publicación del sitio.</li>
@@ -114,14 +120,14 @@
     </section>
   </main>
 
-  <footer>
-    <p><small>© 2026 Digivice.io</small></p>
+  <footer class="pie">
+    <p class="pie__marca"><small>© 2026 Digivice.io</small></p>
     <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
     <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
     <nav aria-label="Enlaces del pie de página">
       <ul>
-        <li><a href="creditos.html" aria-current="page">Créditos</a></li>
-        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+        <li><a class="pie__enlace" href="creditos.html" aria-current="page">Créditos</a></li>
+        <li><a class="pie__enlace" href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
       </ul>
     </nav>
   </footer>

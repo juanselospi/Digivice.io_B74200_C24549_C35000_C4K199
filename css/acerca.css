@@ -1,0 +1,273 @@
+/* pagina acerca de nosotros */
+
+/* va despues de tokens.css y common.css.
+   una columna en celular, mision y vision lado a lado de 48rem para arriba
+   y el equipo de 2 en 2 y luego de 4 en 4 */
+
+.acerca {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-4);
+  align-content: start;
+}
+
+.acerca > * {
+  margin-block: 0;
+}
+
+/* lo que no es mision o vision ocupa toda la fila */
+.acerca > :not(.acerca__bloque) {
+  grid-column: 1 / -1;
+}
+
+
+/* encabezado de la pagina
+   la etiqueta chiquita en mayuscula arriba del h1, como en el diseño */
+.acerca__etiqueta {
+  font-family: var(--fuente-titulo);
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.acerca > h1 {
+  margin-top: calc(var(--espacio-3) * -1);
+}
+
+.acerca__intro {
+  max-width: 65ch;
+  color: var(--color-texto-suave);
+}
+
+
+/* mision y vision */
+.acerca__bloque h2 {
+  margin-top: 0;
+  font-size: var(--titulo-3);
+}
+
+.acerca__bloque p {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
+
+
+/* valores
+   cada valor con la barrita naranja del diseño. en compu el nombre va a la
+   izquierda y la explicacion a la derecha, con una linea entre filas */
+.acerca__valores dl {
+  display: grid;
+  margin: 0;
+}
+
+.acerca__valores dt {
+  padding-left: var(--espacio-2);
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  border-left: 4px solid var(--color-acento);
+}
+
+.acerca__valores dd {
+  margin: var(--espacio-1) 0 var(--espacio-3);
+  color: var(--color-texto-suave);
+}
+
+
+/* integrantes
+   grid con columnas fijas y no auto-fit, porque con el h2 a todo lo ancho
+   auto-fit deja columnas vacias */
+.acerca__equipo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-3);
+}
+
+.acerca__equipo > h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.integrante {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  transition: border-color var(--transicion);
+}
+
+.integrante > * {
+  margin: 0;
+}
+
+/* la foto es el sprite dentro del circulo punteado del diseño.
+   el sprite viene abajo en el png, por eso el object-position */
+.integrante__foto {
+  --diametro: 6.5rem;
+
+  width: var(--diametro);
+  height: var(--diametro);
+  object-fit: contain;
+  object-position: 50% calc(var(--diametro) * -0.2);
+  border: 2px dashed var(--color-borde);
+  border-radius: 50%;
+  background: var(--color-fondo-suave);
+  transition: filter var(--transicion), border-color var(--transicion);
+}
+
+/* rol con la barrita naranja y la linea de abajo */
+.integrante__rol {
+  padding: 0 0 var(--espacio-2) var(--espacio-2);
+  font-family: var(--fuente-titulo);
+  font-weight: 500;
+  color: var(--color-texto-suave);
+  border-left: 4px solid var(--color-acento);
+  border-bottom: var(--borde);
+}
+
+/* el enlace siempre abajo aunque una tarjeta tenga mas texto */
+.integrante__enlace {
+  margin-top: auto;
+  padding-top: var(--espacio-3);
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+}
+
+
+/* efecto de las fotos
+   con mouse el sprite esta en gris y se pinta al pasar por la tarjeta.
+   en celular no hay hover, asi que ahi siempre va a color.
+   con teclado pasa lo mismo cuando el foco llega al perfil de github */
+@media (hover: hover) {
+  .integrante__foto {
+    filter: grayscale(100%);
+  }
+
+  .integrante:hover,
+  .integrante:focus-within {
+    border-color: var(--color-marca);
+  }
+
+  .integrante:hover .integrante__foto,
+  .integrante:focus-within .integrante__foto {
+    filter: none;
+    border-style: solid;
+    border-color: var(--color-marca);
+  }
+}
+
+/* y ademas crece y da un saltito, solo si no se pidio reducir movimiento.
+   step-end para que salte de golpe como pixel art */
+@media (prefers-reduced-motion: no-preference) {
+  .integrante__foto {
+    transition: filter var(--transicion), border-color var(--transicion), scale var(--transicion);
+  }
+
+  .integrante:hover .integrante__foto,
+  .integrante:focus-within .integrante__foto {
+    scale: 1.08;
+    animation: saltito 0.6s step-end 2;
+  }
+}
+
+@keyframes saltito {
+  50% {
+    translate: 0 -0.4rem;
+  }
+}
+
+
+/* sobre el proyecto
+   linea arriba como en el diseño, y en compu el texto a la izquierda y los
+   datos del curso a la derecha */
+.acerca__proyecto {
+  display: grid;
+  gap: var(--espacio-2) var(--espacio-6);
+  padding-top: var(--espacio-5);
+  border-top: var(--borde);
+}
+
+.acerca__proyecto > * {
+  margin: 0;
+}
+
+.acerca__proyecto p {
+  max-width: 65ch;
+  color: var(--color-texto-suave);
+}
+
+.acerca__proyecto a {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.acerca__datos {
+  display: grid;
+  grid-template-columns: minmax(6rem, max-content) minmax(0, 1fr);
+  margin-top: var(--espacio-3);
+}
+
+.acerca__datos dt,
+.acerca__datos dd {
+  padding-block: var(--espacio-2);
+  border-bottom: var(--borde);
+}
+
+.acerca__datos dt {
+  padding-right: var(--espacio-3);
+  color: var(--color-texto-suave);
+}
+
+.acerca__datos dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+
+/* tablet: el equipo de 2 en 2 */
+@media (width >= 32rem) {
+  .acerca__equipo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* compu */
+@media (width >= 48rem) {
+  .acerca {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .acerca__valores dl {
+    grid-template-columns: minmax(10rem, max-content) minmax(0, 1fr);
+  }
+
+  .acerca__valores dt,
+  .acerca__valores dd {
+    margin: 0;
+    padding-block: var(--espacio-2);
+    border-bottom: var(--borde);
+  }
+
+  .acerca__valores dd {
+    padding-left: var(--espacio-4);
+  }
+
+  .acerca__proyecto {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  /* los datos del curso en la columna derecha, al lado de todo el texto */
+  .acerca__datos {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
+@media (width >= 64rem) {
+  .acerca__equipo {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

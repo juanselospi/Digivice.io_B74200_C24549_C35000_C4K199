@@ -9,13 +9,19 @@
   <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/reglas.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">
+  <header class="encabezado">
+    <a class="encabezado__logo" href="index.html">
       <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
     </a>
-    <nav aria-label="Menú principal">
+    <nav class="menu" aria-label="Menú principal">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="reglas.html" aria-current="page">Reglas</a></li>
@@ -23,43 +29,43 @@
       </ul>
     </nav>
     <!-- buscador por ahora es solo estetico -->
-    <form role="search">
-      <label for="buscar">Buscar</label>
+    <form class="buscador" role="search">
+      <label class="solo-lectores" for="buscar">Buscar</label>
       <input type="search" id="buscar" name="q" placeholder="Buscar">
-      <button type="submit">Buscar</button>
+      <button class="buscador__boton" type="submit">Buscar</button>
     </form>
   </header>
 
-  <main>
+  <main class="reglas">
     <h1>Reglas de juego</h1>
     <p>El objetivo de la partida es sobrevivir y eliminar a los demás jugadores hasta ser el último jugador activo.</p>
 
     <!-- solo estetico por ahora, el filtro de reglas va con JS -->
-    <form role="search" aria-label="Buscar en las reglas">
-      <label for="buscar-regla">Buscar palabra clave</label>
+    <form class="buscador buscador--reglas" role="search" aria-label="Buscar en las reglas">
+      <label class="solo-lectores" for="buscar-regla">Buscar palabra clave</label>
       <input type="search" id="buscar-regla" name="q" placeholder="Buscar palabra clave">
-      <button type="submit">Buscar</button>
+      <button class="buscador__boton" type="submit">Buscar</button>
     </form>
 
     <!-- los iconos van con CSS -->
-    <section id="orbes">
-      <h2>Orbes</h2>
-      <p>Aprende sobre los distintos tipos de orbes repartidos por el mapa.</p>
-      <button type="button" command="show-modal" commandfor="reglas-orbes">Ver reglas de orbes</button>
+    <section class="tarjeta regla regla--orbes" id="orbes">
+      <h2 class="regla__titulo">Orbes</h2>
+      <p class="regla__texto">Aprende sobre los distintos tipos de orbes repartidos por el mapa.</p>
+      <button class="boton boton--borde regla__boton" type="button" command="show-modal" commandfor="reglas-orbes">Ver reglas de orbes</button>
       <dialog id="reglas-orbes" aria-labelledby="titulo-orbes" closedby="any">
         <h3 id="titulo-orbes">Orbes</h3>
         <h4 id="regla-1">1. Recolección de data</h4>
         <p>Los jugadores pueden desplazarse libremente por el mapa y recolectar data de tipo Data, Vaccine y Virus. Cada data aumenta el puntaje total del jugador y, conforme este puntaje aumenta, también crece el tamaño de su Digimon. Todos los data aumentan el puntaje, sin importar su tipo.</p>
         <form method="dialog">
-          <button>Cerrar</button>
+          <button class="boton">Cerrar</button>
         </form>
       </dialog>
     </section>
 
-    <section id="evolucion">
-      <h2>Evolución</h2>
-      <p>Conoce sobre las evoluciones de los Digimon y cómo cambia su poder de ataque en cada etapa.</p>
-      <button type="button" command="show-modal" commandfor="reglas-evolucion">Ver reglas de evolución</button>
+    <section class="tarjeta regla regla--evolucion" id="evolucion">
+      <h2 class="regla__titulo">Evolución</h2>
+      <p class="regla__texto">Conoce sobre las evoluciones de los Digimon y cómo cambia su poder de ataque en cada etapa.</p>
+      <button class="boton boton--borde regla__boton" type="button" command="show-modal" commandfor="reglas-evolucion">Ver reglas de evolución</button>
       <dialog id="reglas-evolucion" aria-labelledby="titulo-evolucion" closedby="any">
         <h3 id="titulo-evolucion">Evolución</h3>
         <h4 id="regla-2">2. Sistema de evolución</h4>
@@ -82,15 +88,15 @@
           </tbody>
         </table>
         <form method="dialog">
-          <button>Cerrar</button>
+          <button class="boton">Cerrar</button>
         </form>
       </dialog>
     </section>
 
-    <section id="combate">
-      <h2>Combate</h2>
-      <p>Modos de ataque y estrategias básicas. El ataque especial cuesta parte de tus puntos de vida.</p>
-      <button type="button" command="show-modal" commandfor="reglas-combate">Ver reglas de combate</button>
+    <section class="tarjeta regla regla--combate" id="combate">
+      <h2 class="regla__titulo">Combate</h2>
+      <p class="regla__texto">Modos de ataque y estrategias básicas. El ataque especial cuesta parte de tus puntos de vida.</p>
+      <button class="boton boton--borde regla__boton" type="button" command="show-modal" commandfor="reglas-combate">Ver reglas de combate</button>
       <dialog id="reglas-combate" aria-labelledby="titulo-combate" closedby="any">
         <h3 id="titulo-combate">Combate</h3>
         <h4 id="regla-3">3. Puntaje y puntos de vida</h4>
@@ -102,15 +108,15 @@
         <p>El jugador puede utilizar un ataque especial a distancia presionando la <kbd>barra espaciadora</kbd>. Este ataque permite causar daño sin necesidad de entrar en contacto directo con otro jugador, pero utilizarlo consume parte de sus propios puntos de vida. El costo del ataque especial aumenta según la evolución del Digimon, siendo de 4 % en evolución 1, 8 % en evolución 2 y 12 % en evolución 3.</p>
         <p>Esta mecánica busca generar una decisión de riesgo y recompensa, ya que permite atacar desde una posición más segura, pero a cambio el jugador sacrifica parte de su propia vida y tamaño.</p>
         <form method="dialog">
-          <button>Cerrar</button>
+          <button class="boton">Cerrar</button>
         </form>
       </dialog>
     </section>
 
-    <section id="eliminacion-victoria">
-      <h2>Eliminación y victoria</h2>
-      <p>Reducción periódica de la zona de juego al estilo Battle Royale. Al final, gana el jugador con mayor puntaje.</p>
-      <button type="button" command="show-modal" commandfor="reglas-eliminacion-victoria">Ver reglas de eliminación y victoria</button>
+    <section class="tarjeta regla regla--zona" id="eliminacion-victoria">
+      <h2 class="regla__titulo">Eliminación y victoria</h2>
+      <p class="regla__texto">Reducción periódica de la zona de juego al estilo Battle Royale. Al final, gana el jugador con mayor puntaje.</p>
+      <button class="boton boton--borde regla__boton" type="button" command="show-modal" commandfor="reglas-eliminacion-victoria">Ver reglas de eliminación y victoria</button>
       <dialog id="reglas-eliminacion-victoria" aria-labelledby="titulo-eliminacion-victoria" closedby="any">
         <h3 id="titulo-eliminacion-victoria">Eliminación y victoria</h3>
         <h4 id="regla-6">6. Eliminación</h4>
@@ -119,20 +125,20 @@
         <p>La partida se desarrollará durante un tiempo limitado y, conforme avance, el área jugable del mapa se irá reduciendo progresivamente, obligando a los jugadores a acercarse y enfrentarse entre sí. Los jugadores que permanezcan fuera de la zona segura recibirán daño de forma continua hasta regresar al área permitida o ser eliminados.</p>
         <p>Durante toda la partida se mantendrá un scoreboard con el puntaje de los jugadores. Al finalizar el tiempo, o cuando solo quede un jugador activo, el jugador con mayor puntaje será declarado ganador.</p>
         <form method="dialog">
-          <button>Cerrar</button>
+          <button class="boton">Cerrar</button>
         </form>
       </dialog>
     </section>
   </main>
 
-  <footer>
-    <p><small>© 2026 Digivice.io</small></p>
+  <footer class="pie">
+    <p class="pie__marca"><small>© 2026 Digivice.io</small></p>
     <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
     <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
     <nav aria-label="Enlaces del pie de página">
       <ul>
-        <li><a href="creditos.html">Créditos</a></li>
-        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+        <li><a class="pie__enlace" href="creditos.html">Créditos</a></li>
+        <li><a class="pie__enlace" href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
       </ul>
     </nav>
   </footer>

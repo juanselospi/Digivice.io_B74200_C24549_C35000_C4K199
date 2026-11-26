@@ -1,0 +1,19 @@
+Hoja: creditos.css
+Validador: https://jigsaw.w3.org/css-validator/ (subida de archivo, perfil css3svg)
+Fecha: 2026-11-08 20:05
+Errores: 0
+Advertencias: 14
+- ADVERTENCIA linea 6: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 22: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 33: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 34: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 51: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 54: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 55: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 56: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 61: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 66: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 88: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 93: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 102: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 106: Due to their dynamic nature, CSS variables are currently not statically checked

@@ -1,0 +1,59 @@
+// constantes de las reglas del juego. cada quien agrega aca las suyas en su seccion,
+// asi los numeros no quedan regados por el codigo.
+
+/** @typedef {import('./estado.js').TipoData} TipoData */
+
+/**
+ * Poder de cada etapa de evolución.
+ * @typedef {object} Etapa
+ * @property {string} nombre Nombre de la etapa (lo que muestra el HUD).
+ * @property {string} digimon Digimon de esa etapa (para elegir el sprite).
+ * @property {number} ataque Daño por contacto, fracción de HP (0.08 = 8 %).
+ * @property {number} costoEspecial Lo que cuesta el especial, fracción del HP propio.
+ */
+
+// ---- partida ----
+/** Duración de la partida en segundos. */
+export const DURACION_PARTIDA = 300;
+/** Jugadores por partida: el local y el resto bots. */
+export const CANTIDAD_JUGADORES = 6;
+/** Nombres de los bots, sacados del diseño. */
+export const NOMBRES_BOTS = ['Rival_02', 'Tamer77', 'xX_Koji', 'Mimi_ai', 'Taichi'];
+/** Nombre del jugador local si no viene en la URL. */
+export const NOMBRE_POR_DEFECTO = 'Jugador';
+/** El dt máximo por cuadro, para que no se salte todo al volver a la pestaña. */
+export const DT_MAXIMO = 0.1;
+
+// ---- mapa ----
+/** Tamaño del mapa en unidades del juego. */
+export const MAPA = { ancho: 3000, alto: 3000 };
+/** Distancia del centro a la que aparecen los jugadores. */
+export const RADIO_APARICION = 900;
+
+// ---- jugadores y evolucion ----
+/** HP (= puntaje) con el que empieza cada jugador. */
+export const HP_INICIAL = 100;
+/** Orbes del tipo correcto que llenan la barra de evolución. */
+export const META_EVOLUCION = 20;
+/** Etapa máxima. */
+export const ETAPA_MAXIMA = 3;
+/** Tipos de data que existen. */
+export const TIPOS_DATA = /** @type {TipoData[]} */ (['data', 'vaccine', 'virus', 'free']);
+/** Tipo de evolución del jugador local (Agumon es Vaccine). */
+export const TIPO_JUGADOR_LOCAL = /** @type {TipoData} */ ('vaccine');
+
+/**
+ * Reglas por etapa, se usa como ETAPAS[jugador.etapa].
+ * @type {Record<1|2|3, Etapa>}
+ */
+export const ETAPAS = {
+  1: { nombre: 'Baby', digimon: 'Botamon', ataque: 0.08, costoEspecial: 0.04 },
+  2: { nombre: 'In-Training', digimon: 'Koromon', ataque: 0.12, costoEspecial: 0.08 },
+  3: { nombre: 'Rookie', digimon: 'Agumon', ataque: 0.16, costoEspecial: 0.12 },
+};
+
+// ---- zona ----
+/** Radio de la zona segura al empezar (cubre casi todo el mapa). */
+export const RADIO_ZONA_INICIAL = 1500;
+/** Radio mínimo al que llega la zona al final de la partida. */
+export const RADIO_ZONA_MINIMO = 200;

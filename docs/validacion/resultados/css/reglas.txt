@@ -1,0 +1,19 @@
+Hoja: reglas.css
+Validador: https://jigsaw.w3.org/css-validator/ (subida de archivo, perfil css3svg)
+Fecha: 2026-11-08 20:05
+Errores: 0
+Advertencias: 14
+- ADVERTENCIA linea 9: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 32: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 33: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 44: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 60: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 85: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 117: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 118: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 122: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 123: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 127: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 131: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 135: Due to their dynamic nature, CSS variables are currently not statically checked
+- ADVERTENCIA linea 144: Due to their dynamic nature, CSS variables are currently not statically checked
