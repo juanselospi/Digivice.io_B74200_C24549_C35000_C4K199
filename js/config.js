@@ -57,3 +57,29 @@ export const ETAPAS = {
 export const RADIO_ZONA_INICIAL = 1500;
 /** Radio mínimo al que llega la zona al final de la partida. */
 export const RADIO_ZONA_MINIMO = 200;
+
+// ---- orbes ----
+/** Orbes que hay en el mapa al mismo tiempo. */
+export const CANTIDAD_ORBES = 300;
+/** Radio de cada orbe. */
+export const RADIO_ORBE = 8;
+/** HP que da cualquier orbe, sin importar el tipo. */
+export const HP_POR_ORBE = 10;
+
+// ---- tamaño y movimiento ----
+/** Radio de un jugador con 0 de hp. */
+export const RADIO_BASE = 20;
+/** Cuanto crece el radio con la raiz del hp. */
+export const FACTOR_RADIO = 2;
+/** Velocidad de los jugadores en unidades por segundo. */
+export const VELOCIDAD = 250;
+
+// ---- bots ----
+/** Distancia a la que un bot ve a los rivales. */
+export const VISION_BOT = 600;
+/** Veces por segundo (en promedio) que un bot tira el especial si tiene a alguien cerca. */
+export const PROBABILIDAD_ESPECIAL_BOT = 0.5;
+/** Los orbes de su tipo los ve a esta fraccion de la distancia real. */
+export const PESO_ORBE_PROPIO = 0.5;
+/** Que tan adentro del borde de la zona se quiere mantener un bot. */
+export const MARGEN_ZONA_BOT = 100;
