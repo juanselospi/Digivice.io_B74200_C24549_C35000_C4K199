@@ -8,6 +8,9 @@ import { actualizarPartida } from './partida.js';
 import { actualizarBots } from './bots.js';
 import { moverJugadores } from './movimiento.js';
 import { actualizarOrbes } from './orbes.js';
+import { actualizarZona } from './zona.js';
+import { actualizarCombate } from './combate.js';
+import { actualizarEspeciales } from './especial.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 
@@ -21,7 +24,9 @@ const PASOS_LOGICA = [
   actualizarBots,
   moverJugadores,
   actualizarOrbes,
-  // persona 3: combate, especial y zona
+  actualizarZona,
+  actualizarCombate,
+  actualizarEspeciales,
   actualizarPartida,
 ];
 
