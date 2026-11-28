@@ -1,6 +1,8 @@
 // puntaje, tamaño y evolucion de cada jugador
 
-import { ETAPA_MAXIMA, FACTOR_RADIO, HP_POR_ORBE, META_EVOLUCION, RADIO_BASE } from './config.js';
+import {
+  ETAPA_MAXIMA, FACTOR_RADIO, HP_POR_ORBE, META_EVOLUCION, RADIO_BASE, RADIO_MAXIMO,
+} from './config.js';
 import { registrarEvento } from './estado.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
@@ -14,7 +16,7 @@ import { registrarEvento } from './estado.js';
  * @returns {number} Radio en unidades del mapa.
  */
 export function radioJugador(jugador) {
-  return RADIO_BASE + Math.sqrt(jugador.hp) * FACTOR_RADIO;
+  return Math.min(RADIO_BASE + Math.sqrt(Math.max(0, jugador.hp)) * FACTOR_RADIO, RADIO_MAXIMO);
 }
 
 /**

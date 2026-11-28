@@ -73,6 +73,8 @@ export const RADIO_BASE = 20;
 export const FACTOR_RADIO = 2;
 /** Velocidad de los jugadores en unidades por segundo. */
 export const VELOCIDAD = 250;
+/** Radio maximo de un jugador, para que nunca sea mas grande que el mapa. */
+export const RADIO_MAXIMO = 300;
 
 // ---- bots ----
 /** Distancia a la que un bot ve a los rivales. */
@@ -83,6 +85,8 @@ export const PROBABILIDAD_ESPECIAL_BOT = 0.5;
 export const PESO_ORBE_PROPIO = 0.5;
 /** Que tan adentro del borde de la zona se quiere mantener un bot. */
 export const MARGEN_ZONA_BOT = 100;
+/** Cuantas veces mas hp tiene que tener alguien para que el bot lo vea mas fuerte. */
+export const VENTAJA_HP_BOT = 1.2;
 
 // ---- combate, especial y zona ----
 // el ataque de ETAPAS (8/12/16 %) se cobra cada segundo de contacto sobre el puntaje
