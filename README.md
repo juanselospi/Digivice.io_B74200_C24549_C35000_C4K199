@@ -150,13 +150,14 @@ Se puede probar con `juego.html?nickname=TuNombre`.
 | `js/orbes.js` | Orbes que salen dentro de la zona segura y se recogen al tocarlos. |
 | `js/movimiento.js` | Mueve a cada jugador segun su `intencion` sin salirse del mapa. |
 | `js/bots.js` | IA de los bots: vuelven a la zona, huyen, persiguen o van por orbes. |
+| `js/vista/mapa.js` | Canvas: zona, cuadrícula, orbes, proyectiles y Digimon según su etapa, con la cámara siguiendo al jugador. |
 
 ### Reglas para sumar un módulo
 
 - Hay **un solo objeto `estado`** (ver `EstadoJuego` en `estado.js`). Nada de variables globales sueltas con datos de la partida.
 - Los módulos de **lógica** exportan una función `(estado, dt) => void` que solo cambia el estado y nunca toca el DOM.
-- Los módulos de **vista** exportan una función `(estado) => void` que solo lee el estado y dibuja.
-- Para conectarlo, se importa en `main.js` y se agrega en su lugar de `PASOS_LOGICA` o `PASOS_VISTA` (ya hay un comentario por persona).
+- Los módulos de **vista** exportan una función `crearVista...(elementos)` que recibe los elementos de la página y devuelve el paso `(estado) => void`, que solo lee el estado y dibuja. Se agregan en `crearPasosVista()` de `main.js`.
+- Para conectarlo, se importa en `main.js` y se agrega en su lugar de `PASOS_LOGICA` o de `crearPasosVista()` (ya hay un comentario por persona).
 - Cada jugador tiene su `intencion` (`dx`, `dy`, `especial`): la del local la llena `entrada.js` y la de los bots la llena `bots.js`. El movimiento y el especial leen solo `jugador.intencion`.
 - Para la realimentación se usa `registrarEvento(estado, 'golpe', jugadorId, otroId)`. Los eventos se borran al empezar cada cuadro, así `feedback.js` ve cada uno una sola vez.
 - Los ids nuevos de orbes y proyectiles salen de `nuevoId(estado)`.
