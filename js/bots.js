@@ -2,7 +2,9 @@
 // orden: volver a la zona, huir del mas fuerte, perseguir al mas debil o ir por orbes
 // si estan parejos no se persiguen, si no se quedan pegados y nadie come
 
-import { MARGEN_ZONA_BOT, PESO_ORBE_PROPIO, PROBABILIDAD_ESPECIAL_BOT, VISION_BOT } from './config.js';
+import {
+  MARGEN_ZONA_BOT, PESO_ORBE_PROPIO, PROBABILIDAD_ESPECIAL_BOT, VENTAJA_HP_BOT, VISION_BOT,
+} from './config.js';
 import { direccionHacia, distancia } from './geometria.js';
 import { jugadoresVivos } from './partida.js';
 
@@ -56,13 +58,13 @@ function costoOrbe(bot, orbe) {
  */
 function esMasFuerte(rival, bot) {
   if (rival.etapa !== bot.etapa) return rival.etapa > bot.etapa;
-  return rival.hp > bot.hp;
+  return rival.hp > bot.hp * VENTAJA_HP_BOT;
 }
 
 /**
  * Revisa si el bot esta afuera de la zona o muy pegado al borde.
  * @param {EstadoJuego} estado Estado de la partida.
- * @param {Jugador} bot Bot que esta decidiendo.
+ * @param {{x: number, y: number}} bot Bot (u orbe) a revisar.
  * @returns {boolean} Si tiene que volver a la zona.
  */
 function fueraDeZona(estado, bot) {
@@ -91,19 +93,21 @@ function elegirDireccion(estado, bot, rival) {
   if (fueraDeZona(estado, bot)) return direccionHacia(bot, estado.zona);
   if (rival && esMasFuerte(rival, bot)) return alejarseDe(bot, rival);
   if (rival && esMasFuerte(bot, rival)) return direccionHacia(bot, rival);
-  const orbe = elMenor(estado.orbes, (candidato) => costoOrbe(bot, candidato));
+  const alcanzables = estado.orbes.filter((candidato) => !fueraDeZona(estado, candidato));
+  const orbe = elMenor(alcanzables, (candidato) => costoOrbe(bot, candidato));
   return orbe ? direccionHacia(bot, orbe) : { dx: 0, dy: 0 };
 }
 
 /**
  * Decide si tira el especial: solo cuando persigue a uno mas debil y de vez en cuando.
+ * @param {EstadoJuego} estado Estado de la partida.
  * @param {Jugador} bot Bot que esta decidiendo.
  * @param {Jugador|null} rival Rival mas cercano que ve.
  * @param {number} dt Segundos desde el cuadro anterior.
  * @returns {boolean} Si lo tira en este cuadro.
  */
-function vaAtacar(bot, rival, dt) {
-  if (!rival || !esMasFuerte(bot, rival)) return false;
+function vaAtacar(estado, bot, rival, dt) {
+  if (fueraDeZona(estado, bot) || !rival || !esMasFuerte(bot, rival)) return false;
   return Math.random() < PROBABILIDAD_ESPECIAL_BOT * dt;
 }
 
@@ -116,7 +120,7 @@ function vaAtacar(bot, rival, dt) {
 function decidirIntencion(estado, bot, dt) {
   const rival = rivalCercano(estado, bot);
   Object.assign(bot.intencion, elegirDireccion(estado, bot, rival));
-  bot.intencion.especial = vaAtacar(bot, rival, dt);
+  bot.intencion.especial = vaAtacar(estado, bot, rival, dt);
 }
 
 /**

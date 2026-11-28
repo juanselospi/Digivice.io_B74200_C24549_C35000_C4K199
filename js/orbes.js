@@ -5,6 +5,7 @@ import { nuevoId } from './estado.js';
 import { distancia, limitar, puntoEnCirculo } from './geometria.js';
 import { jugadoresVivos } from './partida.js';
 import { aplicarOrbe, radioJugador } from './progreso.js';
+import { estaAfuera } from './zona.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 /** @typedef {import('./estado.js').Jugador} Jugador */
@@ -74,6 +75,7 @@ function recolectarOrbes(estado) {
  * @param {EstadoJuego} estado Estado de la partida.
  */
 export function actualizarOrbes(estado) {
+  estado.orbes = estado.orbes.filter((orbe) => !estaAfuera(orbe, estado.zona));
   recolectarOrbes(estado);
   reponerOrbes(estado);
 }
