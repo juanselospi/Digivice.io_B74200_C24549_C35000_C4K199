@@ -83,3 +83,20 @@ export const PROBABILIDAD_ESPECIAL_BOT = 0.5;
 export const PESO_ORBE_PROPIO = 0.5;
 /** Que tan adentro del borde de la zona se quiere mantener un bot. */
 export const MARGEN_ZONA_BOT = 100;
+
+// ---- combate, especial y zona ----
+// el ataque de ETAPAS (8/12/16 %) se cobra cada segundo de contacto sobre el puntaje
+// maximo del que lo recibe. asi el daño depende de la etapa del que pega y no del tamaño,
+// y aunque alguien sea muy grande igual llega a 0
+/** Velocidad del proyectil del especial, en unidades por segundo. */
+export const VELOCIDAD_PROYECTIL = 700;
+/** Radio del proyectil para los choques. */
+export const RADIO_PROYECTIL = 12;
+/** El proyectil quita esta cantidad de veces lo que le costo al que lo tiro. */
+export const MULTIPLICADOR_ESPECIAL = 2;
+/** Cada cuantos segundos se cierra la zona un escalon. */
+export const INTERVALO_ZONA = 60;
+/** Que tan rapido se encoge la zona cuando se esta cerrando, en unidades por segundo. */
+export const VELOCIDAD_CIERRE_ZONA = 40;
+/** Fraccion del puntaje maximo que se pierde por segundo afuera de la zona. */
+export const DANO_ZONA = 0.05;
