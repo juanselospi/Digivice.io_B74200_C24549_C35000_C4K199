@@ -153,6 +153,7 @@ Se puede probar con `juego.html?nickname=TuNombre`.
 | `js/vista/mapa.js` | Canvas: zona, cuadrícula, orbes, proyectiles y Digimon según su etapa, con la cámara siguiendo al jugador. |
 | `js/vista/hud.js` | Tu Digimon (puntaje, etapa, aro de evolución, ataque y especial), reloj, cierre de la zona y leaderboard. |
 | `js/vista/fin.js` | Llena y abre con `showModal()` el modal de derrota (apenas te eliminan) o de victoria (al terminar). |
+| `js/vista/feedback.js` | Convierte `estado.eventos` en sonidos, flash de daño, brillo al evolucionar, aro del especial y avisos cortos. |
 
 ### Reglas para sumar un módulo
 

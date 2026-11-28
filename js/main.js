@@ -14,6 +14,7 @@ import { actualizarEspeciales } from './especial.js';
 import { crearVistaMapa } from './vista/mapa.js';
 import { crearVistaHud } from './vista/hud.js';
 import { crearVistaFin } from './vista/fin.js';
+import { crearVistaFeedback } from './vista/feedback.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 
@@ -46,6 +47,7 @@ function crearPasosVista(lienzo) {
     crearVistaMapa(lienzo),
     crearVistaHud(document),
     crearVistaFin(document),
+    crearVistaFeedback(document),
     // persona 4: feedback
   ];
 }
