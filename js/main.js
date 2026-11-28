@@ -11,6 +11,10 @@ import { actualizarOrbes } from './orbes.js';
 import { actualizarZona } from './zona.js';
 import { actualizarCombate } from './combate.js';
 import { actualizarEspeciales } from './especial.js';
+import { crearVistaMapa } from './vista/mapa.js';
+import { crearVistaHud } from './vista/hud.js';
+import { crearVistaFin } from './vista/fin.js';
+import { crearVistaFeedback } from './vista/feedback.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 
@@ -30,36 +34,48 @@ const PASOS_LOGICA = [
   actualizarPartida,
 ];
 
+/** @typedef {(estado: EstadoJuego) => void} PasoVista */
+
 /**
- * Pasos de vista, (estado) => void. Solo leen el estado y dibujan.
- * @type {Array<(estado: EstadoJuego) => void>}
+ * Arma los pasos de vista, (estado) => void. Solo leen el estado y dibujan.
+ * Se arman en el setup porque necesitan los elementos de la página.
+ * @param {HTMLCanvasElement} lienzo Canvas del mapa.
+ * @returns {PasoVista[]} Pasos de vista en orden.
  */
-const PASOS_VISTA = [
-  // persona 4: mapa, hud, fin y feedback
-];
+function crearPasosVista(lienzo) {
+  return [
+    crearVistaMapa(lienzo),
+    crearVistaHud(document),
+    crearVistaFin(document),
+    crearVistaFeedback(document),
+    // persona 4: feedback
+  ];
+}
 
 /**
  * Corre un cuadro: borra los eventos viejos, aplica la lógica y dibuja.
  * @param {EstadoJuego} estado Estado de la partida.
  * @param {number} dt Segundos desde el cuadro anterior.
+ * @param {PasoVista[]} pasosVista Pasos de vista a correr después de la lógica.
  */
-function correrCuadro(estado, dt) {
+function correrCuadro(estado, dt, pasosVista) {
   estado.eventos.length = 0;
   for (const paso of PASOS_LOGICA) paso(estado, dt);
-  for (const dibujar of PASOS_VISTA) dibujar(estado);
+  for (const dibujar of pasosVista) dibujar(estado);
 }
 
 /**
  * Arranca el loop con requestAnimationFrame. Se detiene después del cuadro en
  * que termina la partida, así la vista alcanza a mostrar el fin.
  * @param {EstadoJuego} estado Estado de la partida.
+ * @param {PasoVista[]} pasosVista Pasos de vista de cada cuadro.
  */
-function iniciarLoop(estado) {
+function iniciarLoop(estado, pasosVista) {
   let anterior = performance.now();
   const cuadro = (ahora) => {
     const dt = Math.min((ahora - anterior) / 1000, DT_MAXIMO);
     anterior = ahora;
-    correrCuadro(estado, dt);
+    correrCuadro(estado, dt, pasosVista);
     if (estado.fase === 'jugando') requestAnimationFrame(cuadro);
   };
   requestAnimationFrame(cuadro);
@@ -82,7 +98,7 @@ function iniciarJuego() {
   const lienzo = /** @type {HTMLCanvasElement} */ (document.getElementById('mapa'));
   const botonEspecial = /** @type {HTMLButtonElement} */ (document.querySelector('.ataque__boton'));
   configurarEntrada(estado, lienzo, botonEspecial);
-  iniciarLoop(estado);
+  iniciarLoop(estado, crearPasosVista(lienzo));
 }
 
 // el script es async, puede correr antes de que termine de cargar la pagina

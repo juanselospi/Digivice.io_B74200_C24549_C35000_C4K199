@@ -334,17 +334,6 @@
 }
 
 
-/* botones temporales de victoria y derrota */
-.vista-previa {
-  display: flex;
-  flex-wrap: wrap;
-  grid-area: vista;
-  place-self: end center;
-  justify-content: center;
-  gap: var(--espacio-2);
-}
-
-
 /* ataque especial
    la onda se dispara con :active y al soltar se va con la transicion.
    asi se ve completa aunque el tap sea rapidisimo.
@@ -420,6 +409,43 @@
   text-transform: uppercase;
   border: 0;
   background: none;
+}
+
+
+/* realimentacion que pone el JS (feedback.js)
+   el aviso va abajo al centro. vacio no se ve, pero sigue en la pagina para que
+   el lector de pantalla lea lo que llegue */
+.mensaje {
+  grid-area: vista;
+  place-self: end center;
+  font-size: var(--texto-chico);
+  font-weight: 700;
+  text-align: center;
+}
+
+.mensaje:empty {
+  opacity: 0;
+}
+
+/* flash de daño: borde rojo por dentro del mapa mientras te sigan pegando */
+.mapa::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 4rem var(--color-derrota);
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.partida--golpe .mapa::after {
+  opacity: 0.6;
+  transition: none;
+}
+
+/* brillo del panel de tu Digimon al evolucionar */
+.digimon--evoluciono {
+  animation: evolucion 1200ms ease-out;
 }
 
 
@@ -655,10 +681,6 @@
   .leyenda {
     max-width: none;
   }
-
-  .vista-previa {
-    flex-wrap: nowrap;
-  }
 }
 
 
@@ -676,5 +698,12 @@
 
   75% {
     transform: translateX(0.4rem);
+  }
+}
+
+@keyframes evolucion {
+  30% {
+    box-shadow: 0 0 1.5rem 0.5rem var(--color-aviso);
+    transform: scale(1.04);
   }
 }

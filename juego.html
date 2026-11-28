@@ -99,11 +99,9 @@
       </figcaption>
     </figure>
 
-    <!-- botones temporales para ver los modales sin jugar, se quitan cuando el JS los abra al terminar la partida -->
-    <p class="hud vista-previa">
-      <button class="boton boton--borde" type="button" command="show-modal" commandfor="fin-victoria">Ver victoria</button>
-      <button class="boton boton--borde" type="button" command="show-modal" commandfor="fin-derrota">Ver derrota</button>
-    </p>
+    <!-- abajo al centro: avisos cortos de la partida (evoluciones y eliminaciones).
+         empieza vacio, el JS lo llena y el role="status" hace que los lectores de pantalla lo lean -->
+    <p class="hud mensaje" role="status"></p>
 
     <!-- abajo a la derecha -->
     <section class="hud ataque">
