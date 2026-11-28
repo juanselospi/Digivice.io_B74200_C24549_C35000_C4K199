@@ -334,17 +334,6 @@
 }
 
 
-/* botones temporales de victoria y derrota */
-.vista-previa {
-  display: flex;
-  flex-wrap: wrap;
-  grid-area: vista;
-  place-self: end center;
-  justify-content: center;
-  gap: var(--espacio-2);
-}
-
-
 /* ataque especial
    la onda se dispara con :active y al soltar se va con la transicion.
    asi se ve completa aunque el tap sea rapidisimo.
@@ -654,10 +643,6 @@
 @media (width >= 64rem) {
   .leyenda {
     max-width: none;
-  }
-
-  .vista-previa {
-    flex-wrap: nowrap;
   }
 }
 

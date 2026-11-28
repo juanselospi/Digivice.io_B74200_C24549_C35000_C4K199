@@ -89,14 +89,23 @@ function leerColores() {
 }
 
 /**
+ * Ruta del sprite quieto de un Digimon, para usarlo en un img o en el canvas.
+ * @param {string} digimon Nombre del Digimon (el de ETAPAS).
+ * @returns {string} Ruta relativa a la página.
+ */
+export function rutaSprite(digimon) {
+  return CARPETA_SPRITES + SPRITES[digimon].archivo;
+}
+
+/**
  * Empieza a cargar el sprite de cada Digimon. Mientras no carguen se dibuja un circulo.
  * @returns {Record<string, HTMLImageElement>} Imagen de cada Digimon.
  */
 function cargarSprites() {
   const sprites = {};
-  for (const [digimon, { archivo }] of Object.entries(SPRITES)) {
+  for (const digimon of Object.keys(SPRITES)) {
     sprites[digimon] = new Image();
-    sprites[digimon].src = CARPETA_SPRITES + archivo;
+    sprites[digimon].src = rutaSprite(digimon);
   }
   return sprites;
 }

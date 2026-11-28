@@ -152,6 +152,7 @@ Se puede probar con `juego.html?nickname=TuNombre`.
 | `js/bots.js` | IA de los bots: vuelven a la zona, huyen, persiguen o van por orbes. |
 | `js/vista/mapa.js` | Canvas: zona, cuadrícula, orbes, proyectiles y Digimon según su etapa, con la cámara siguiendo al jugador. |
 | `js/vista/hud.js` | Tu Digimon (puntaje, etapa, aro de evolución, ataque y especial), reloj, cierre de la zona y leaderboard. |
+| `js/vista/fin.js` | Llena y abre con `showModal()` el modal de derrota (apenas te eliminan) o de victoria (al terminar). |
 
 ### Reglas para sumar un módulo
 

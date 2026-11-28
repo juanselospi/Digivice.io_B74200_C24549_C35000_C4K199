@@ -44,7 +44,7 @@ function poner(nodo, texto) {
  * @param {number} valor Puntaje.
  * @returns {string} Puntaje para mostrar.
  */
-function formatearPuntaje(valor) {
+export function formatearPuntaje(valor) {
   return String(Math.round(valor)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
@@ -53,7 +53,7 @@ function formatearPuntaje(valor) {
  * @param {number} segundos Segundos que faltan.
  * @returns {string} Tiempo para mostrar.
  */
-function formatearTiempo(segundos) {
+export function formatearTiempo(segundos) {
   const total = Math.ceil(segundos);
   return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
 }
@@ -64,7 +64,7 @@ function formatearTiempo(segundos) {
  * @param {number} segundos Segundos que faltan.
  * @param {string} texto Lo que se ve.
  */
-function ponerTiempo(elemento, segundos, texto) {
+export function ponerTiempo(elemento, segundos, texto) {
   const total = Math.ceil(segundos);
   elemento.dateTime = `PT${Math.floor(total / 60)}M${total % 60}S`;
   poner(elemento, texto);

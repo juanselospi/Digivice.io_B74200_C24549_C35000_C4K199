@@ -13,6 +13,7 @@ import { actualizarCombate } from './combate.js';
 import { actualizarEspeciales } from './especial.js';
 import { crearVistaMapa } from './vista/mapa.js';
 import { crearVistaHud } from './vista/hud.js';
+import { crearVistaFin } from './vista/fin.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 
@@ -44,7 +45,8 @@ function crearPasosVista(lienzo) {
   return [
     crearVistaMapa(lienzo),
     crearVistaHud(document),
-    // persona 4: fin y feedback
+    crearVistaFin(document),
+    // persona 4: feedback
   ];
 }
 
