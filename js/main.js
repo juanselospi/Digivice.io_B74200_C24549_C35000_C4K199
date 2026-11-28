@@ -12,6 +12,7 @@ import { actualizarZona } from './zona.js';
 import { actualizarCombate } from './combate.js';
 import { actualizarEspeciales } from './especial.js';
 import { crearVistaMapa } from './vista/mapa.js';
+import { crearVistaHud } from './vista/hud.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 
@@ -42,7 +43,8 @@ const PASOS_LOGICA = [
 function crearPasosVista(lienzo) {
   return [
     crearVistaMapa(lienzo),
-    // persona 4: hud, fin y feedback
+    crearVistaHud(document),
+    // persona 4: fin y feedback
   ];
 }
 

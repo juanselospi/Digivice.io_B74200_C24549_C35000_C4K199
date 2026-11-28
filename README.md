@@ -151,6 +151,7 @@ Se puede probar con `juego.html?nickname=TuNombre`.
 | `js/movimiento.js` | Mueve a cada jugador segun su `intencion` sin salirse del mapa. |
 | `js/bots.js` | IA de los bots: vuelven a la zona, huyen, persiguen o van por orbes. |
 | `js/vista/mapa.js` | Canvas: zona, cuadrícula, orbes, proyectiles y Digimon según su etapa, con la cámara siguiendo al jugador. |
+| `js/vista/hud.js` | Tu Digimon (puntaje, etapa, aro de evolución, ataque y especial), reloj, cierre de la zona y leaderboard. |
 
 ### Reglas para sumar un módulo
 
