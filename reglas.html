@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- pagina de reglas -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reglas · Digivice.io</title>
+  <meta name="description" content="Reglas de Digivice.io: recolección de data, evolución, combate, ataque especial y zona segura.">
+  <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
+    </a>
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="reglas.html" aria-current="page">Reglas</a></li>
+        <li><a href="acerca.html">Acerca de nosotros</a></li>
+      </ul>
+    </nav>
+    <!-- buscador por ahora es solo estetico -->
+    <form role="search">
+      <label for="buscar">Buscar</label>
+      <input type="search" id="buscar" name="q" placeholder="Buscar">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <main>
+    <h1>Reglas de juego</h1>
+    <p>El objetivo de la partida es sobrevivir y eliminar a los demás jugadores hasta ser el último jugador activo.</p>
+
+    <!-- solo estetico por ahora, el filtro de reglas va con JS -->
+    <form role="search" aria-label="Buscar en las reglas">
+      <label for="buscar-regla">Buscar palabra clave</label>
+      <input type="search" id="buscar-regla" name="q" placeholder="Buscar palabra clave">
+      <button type="submit">Buscar</button>
+    </form>
+
+    <!-- los iconos van con CSS -->
+    <section id="orbes">
+      <h2>Orbes</h2>
+      <p>Aprende sobre los distintos tipos de orbes repartidos por el mapa.</p>
+      <button type="button" command="show-modal" commandfor="reglas-orbes">Ver reglas de orbes</button>
+      <dialog id="reglas-orbes" aria-labelledby="titulo-orbes" closedby="any">
+        <h3 id="titulo-orbes">Orbes</h3>
+        <h4 id="regla-1">1. Recolección de data</h4>
+        <p>Los jugadores pueden desplazarse libremente por el mapa y recolectar data de tipo Data, Vaccine y Virus. Cada data aumenta el puntaje total del jugador y, conforme este puntaje aumenta, también crece el tamaño de su Digimon. Todos los data aumentan el puntaje, sin importar su tipo.</p>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
+    </section>
+
+    <section id="evolucion">
+      <h2>Evolución</h2>
+      <p>Conoce sobre las evoluciones de los Digimon y cómo cambia su poder de ataque en cada etapa.</p>
+      <button type="button" command="show-modal" commandfor="reglas-evolucion">Ver reglas de evolución</button>
+      <dialog id="reglas-evolucion" aria-labelledby="titulo-evolucion" closedby="any">
+        <h3 id="titulo-evolucion">Evolución</h3>
+        <h4 id="regla-2">2. Sistema de evolución</h4>
+        <p>Cada Digimon tiene asignado un tipo de data necesario para evolucionar, por lo que únicamente los data correspondientes aumentan su barra de evolución, mientras que los demás solo aumentan su puntaje. Al completar la barra, el Digimon avanza a la siguiente etapa, hasta alcanzar un máximo de tres evoluciones.</p>
+        <p>La evolución no determina el tamaño del Digimon, por lo que un jugador puede llegar a ser muy grande incluso estando en su primera evolución, siempre que haya recolectado suficientes data.</p>
+        <!-- resumen de las reglas 4 y 5 -->
+        <table>
+          <caption>Poder de cada etapa de evolución</caption>
+          <thead>
+            <tr>
+              <th scope="col">Etapa</th>
+              <th scope="col">Ataque por contacto</th>
+              <th scope="col">Costo del ataque especial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Evolución 1</th><td>8 %</td><td>4 %</td></tr>
+            <tr><th scope="row">Evolución 2</th><td>12 %</td><td>8 %</td></tr>
+            <tr><th scope="row">Evolución 3</th><td>16 %</td><td>12 %</td></tr>
+          </tbody>
+        </table>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
+    </section>
+
+    <section id="combate">
+      <h2>Combate</h2>
+      <p>Modos de ataque y estrategias básicas. El ataque especial cuesta parte de tus puntos de vida.</p>
+      <button type="button" command="show-modal" commandfor="reglas-combate">Ver reglas de combate</button>
+      <dialog id="reglas-combate" aria-labelledby="titulo-combate" closedby="any">
+        <h3 id="titulo-combate">Combate</h3>
+        <h4 id="regla-3">3. Puntaje y puntos de vida</h4>
+        <p>El puntaje acumulado por el jugador también representa sus puntos de vida: entre más data recolecta, mayor será su tamaño y poder de ataque. Recibir daño reduce estos puntos y, como consecuencia, también disminuye el tamaño del Digimon y su poder de ataque.</p>
+        <h4 id="regla-4">4. Combate por contacto</h4>
+        <p>Cuando dos Digimon colisionan, ambos se hacen daño continuamente mientras permanezcan en contacto. El daño causado no depende del tamaño del jugador, sino de su etapa de evolución, entonces un Digimon en evolución 1 tendrá un ataque normal de 8 %, en evolución 2 de 12 % y en evolución 3 de 16 %.</p>
+        <p>De esta forma, un Digimon puede tener muchos puntos de vida y ser muy grande sin haber evolucionado, pero tendrá menor capacidad de ataque que un Digimon en una evolución superior.</p>
+        <h4 id="regla-5">5. Ataque especial</h4>
+        <p>El jugador puede utilizar un ataque especial a distancia presionando la <kbd>barra espaciadora</kbd>. Este ataque permite causar daño sin necesidad de entrar en contacto directo con otro jugador, pero utilizarlo consume parte de sus propios puntos de vida. El costo del ataque especial aumenta según la evolución del Digimon, siendo de 4 % en evolución 1, 8 % en evolución 2 y 12 % en evolución 3.</p>
+        <p>Esta mecánica busca generar una decisión de riesgo y recompensa, ya que permite atacar desde una posición más segura, pero a cambio el jugador sacrifica parte de su propia vida y tamaño.</p>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
+    </section>
+
+    <section id="eliminacion-victoria">
+      <h2>Eliminación y victoria</h2>
+      <p>Reducción periódica de la zona de juego al estilo Battle Royale. Al final, gana el jugador con mayor puntaje.</p>
+      <button type="button" command="show-modal" commandfor="reglas-eliminacion-victoria">Ver reglas de eliminación y victoria</button>
+      <dialog id="reglas-eliminacion-victoria" aria-labelledby="titulo-eliminacion-victoria" closedby="any">
+        <h3 id="titulo-eliminacion-victoria">Eliminación y victoria</h3>
+        <h4 id="regla-6">6. Eliminación</h4>
+        <p>Los puntos acumulados por el jugador también representan sus puntos de vida, por lo que, si estos llegan a 0, el Digimon queda eliminado de la partida y ya no puede continuar jugando.</p>
+        <h4 id="regla-7">7. Condición de victoria</h4>
+        <p>La partida se desarrollará durante un tiempo limitado y, conforme avance, el área jugable del mapa se irá reduciendo progresivamente, obligando a los jugadores a acercarse y enfrentarse entre sí. Los jugadores que permanezcan fuera de la zona segura recibirán daño de forma continua hasta regresar al área permitida o ser eliminados.</p>
+        <p>Durante toda la partida se mantendrá un scoreboard con el puntaje de los jugadores. Al finalizar el tiempo, o cuando solo quede un jugador activo, el jugador con mayor puntaje será declarado ganador.</p>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
+    </section>
+  </main>
+
+  <footer>
+    <p><small>© 2026 Digivice.io</small></p>
+    <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
+    <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
+    <nav aria-label="Enlaces del pie de página">
+      <ul>
+        <li><a href="creditos.html">Créditos</a></li>
+        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>

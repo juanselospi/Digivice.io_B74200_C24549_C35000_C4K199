@@ -1,0 +1,6 @@
+Pagina: juego.html
+Validador: https://validator.w3.org/nu/ (entrada directa)
+Fecha: 2026-10-19 22:17
+Errores: 0
+Advertencias: 0
+Resultado: Document checking completed. No errors or warnings to show.

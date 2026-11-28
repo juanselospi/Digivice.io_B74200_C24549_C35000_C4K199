@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+  plantilla base de digivice.io
+
+  para hacer una pagina nueva:
+    1. copien este archivo.
+    2. ponganle el nombre que toca (lobby.html, reglas.html) y cambien todo lo que diga CAMBIAR.
+
+  Reglas del grupo:
+    1. nada de div ni span, solo etiquetas semanticas.
+    2. esta entrega es solo HTML, el CSS y el JS vienen despues.
+    3. antes de hacer merge pasen la pagina por el validador de la W3C
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CAMBIAR: el nombre de la pagina antes del punto -->
+  <title>Nombre de la página · Digivice.io</title>
+  <!-- CAMBIAR: una frase corta de que trata la pagina -->
+  <meta name="description" content="Descripción corta de la página.">
+  <!-- favicon, lo generamos a partir de assets/icon/digivice.png -->
+  <link rel="icon" href="assets/icon/favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/icon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <a href="index.html">
+      <img src="assets/logo/rebranding.png" alt="Digivice.io, volver al inicio" width="160" height="32">
+    </a>
+    <!-- en el menu solo van estas 3 paginas, como en el diseño.
+         a lobby y juego se llega jugando, y creditos esta en el footer. -->
+    <nav aria-label="Menú principal">
+      <ul>
+        <!-- CAMBIAR: el aria-current="page" va en el enlace de la pagina en la que estamos. -->
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="reglas.html">Reglas</a></li>
+        <li><a href="acerca.html">Acerca de nosotros</a></li>
+      </ul>
+    </nav>
+    <!-- buscador por ahora es solo estetico. -->
+    <form role="search">
+      <label for="buscar">Buscar</label>
+      <input type="search" id="buscar" name="q" placeholder="Buscar">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <main>
+    <!-- CAMBIAR: aqui va el contenido de la pagina, siempre con un solo h1. -->
+    <h1>Nombre de la página</h1>
+  </main>
+
+  <!-- footer tambien igual en todas las paginas -->
+  <footer>
+    <p><small>© 2026 Digivice.io</small></p>
+    <p>Proyecto académico del curso CI-0137 Desarrollo de Aplicaciones Web, Universidad de Costa Rica.</p>
+    <p>Digimon y sus personajes son propiedad de Bandai. Sitio sin fines de lucro.</p>
+    <nav aria-label="Enlaces del pie de página">
+      <ul>
+        <li><a href="creditos.html">Créditos</a></li>
+        <li><a href="https://github.com/juanselospi/Digivice.io_B74200_C24549_C35000_C4K199">Repositorio en GitHub</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>

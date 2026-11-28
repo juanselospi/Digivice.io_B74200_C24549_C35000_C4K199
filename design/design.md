@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../logo/logo.png" alt="Digivice.io" width="320">
+  <img src="../assets/logo/rebranding-invertido.jpg" alt="Digivice.io" width="480">
 </p>
 
 # Arquitectura del sitio
@@ -34,6 +34,8 @@ Las páginas principales del sitio son:
 - **Reglas**: Página informativa que detalla las reglas del juego, incluyendo orbes, evolucióm digimon, combate, zona de juego, entre otros.
 
 - **Acerca de**: Página que describe la misión, visión y valores de la empresa.
+
+- **Créditos**: Página con la atribución de las imágenes, sprites, íconos, fuentes y demás recursos externos usados en el sitio, con su fuente y licencia. Se accede desde el enlace del pie de página, que está presente en todas las páginas.
 
 ## 3. Wireflow principal
 
