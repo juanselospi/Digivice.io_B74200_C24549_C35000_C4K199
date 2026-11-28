@@ -5,6 +5,9 @@ import { DT_MAXIMO, NOMBRE_POR_DEFECTO } from './config.js';
 import { crearEstadoInicial } from './estado.js';
 import { aplicarEntrada, configurarEntrada } from './entrada.js';
 import { actualizarPartida } from './partida.js';
+import { actualizarBots } from './bots.js';
+import { moverJugadores } from './movimiento.js';
+import { actualizarOrbes } from './orbes.js';
 
 /** @typedef {import('./estado.js').EstadoJuego} EstadoJuego */
 
@@ -15,7 +18,9 @@ import { actualizarPartida } from './partida.js';
  */
 const PASOS_LOGICA = [
   aplicarEntrada,
-  // persona 2: bots, movimiento, orbes y progreso
+  actualizarBots,
+  moverJugadores,
+  actualizarOrbes,
   // persona 3: combate, especial y zona
   actualizarPartida,
 ];
